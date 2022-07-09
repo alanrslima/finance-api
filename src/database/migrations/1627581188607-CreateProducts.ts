@@ -6,7 +6,7 @@ export class CreateProducts1627581188607 implements MigrationInterface {
       new Table({
         name: "products",
         columns: [
-          { name: "id", isPrimary: true, type: "uuid" },
+          { name: "id", isPrimary: true, type: "varchar(36)" },
           {
             name: "name",
             type: "varchar",

@@ -8,7 +8,7 @@ export class CreateRoles1627508887000 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "varchar(36)",
             isPrimary: true,
           },
           {

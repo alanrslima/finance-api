@@ -6,8 +6,8 @@ export class CreatePermissionsRoles1627508996984 implements MigrationInterface {
       new Table({
         name: "permissions_roles",
         columns: [
-          { name: "role_id", type: "uuid" },
-          { name: "permission_id", type: "uuid" },
+          { name: "role_id", type: "varchar(36)" },
+          { name: "permission_id", type: "varchar(36)" },
         ],
         foreignKeys: [
           {

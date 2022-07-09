@@ -8,7 +8,7 @@ export class CreatePermissions1627508707913 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "varchar(36)",
             isPrimary: true,
           },
           {
