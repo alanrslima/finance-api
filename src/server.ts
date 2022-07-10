@@ -31,10 +31,19 @@ app.use("/api/v1", productsRouter);
  */
 app.use(
   (error: Error, request: Request, response: Response, next: NextFunction) => {
-    return response.status(500).json({
-      status: "Error",
-      message: error.message,
-    });
+    return response.responser(400, error.message);
+
+    // TODO: Improve error handler
+    switch (error.name) {
+      case "UrlNotFound":
+      case "InvalidBody":
+        return response.responser(400, error.message);
+      default:
+        return response.responser(
+          500,
+          "Ops ocorreu um erro, tente novamente mais tarde."
+        );
+    }
   }
 );
 

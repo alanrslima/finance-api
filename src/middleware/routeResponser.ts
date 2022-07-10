@@ -1,7 +1,13 @@
-export const routeResponser = (req, res, next) => {
-  res.responser = (
+import { NextFunction, Response } from "express";
+
+export const routeResponser = (
+  _: any,
+  response: Response,
+  next: NextFunction
+) => {
+  response.responser = (
     status,
-    msg = "",
+    message = "",
     data = {},
     error = null,
     type = "json"
@@ -15,14 +21,14 @@ export const routeResponser = (req, res, next) => {
     // }
 
     if (error) {
-      console.error(msg, error);
+      console.error(message, error);
       console.log("Error details:", error);
     }
 
-    return res.status(status).type(type).send({
+    return response.status(status).type(type).send({
       data,
       status,
-      msg,
+      message,
     });
   };
 

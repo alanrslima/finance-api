@@ -4,6 +4,12 @@ declare namespace Express {
   }
 
   export interface Response {
-    responser: () => {};
+    responser: (
+      status: number,
+      message = "",
+      data = {},
+      error = null,
+      type = "json"
+    ) => {};
   }
 }

@@ -8,6 +8,8 @@ export class AuthController {
     const authService = new AuthService();
     const result = await authService.execute({ username, password });
 
+    response.responser(400, "Error");
+
     if (result instanceof Error) {
       return response.status(400).json(result.message);
     }

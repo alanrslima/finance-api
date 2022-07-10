@@ -4,13 +4,16 @@ import { Router } from "express";
 import { ensuredAuthenticated } from "../../middleware/ensuredAuthenticated";
 
 const router = Router();
+const createUserController = new CreateUserController();
+const createUserAccessControlListController =
+  new CreateUserAccessControlListController();
 
-router.post("/users", new CreateUserController().handle);
+router.post("/users", createUserController.handle);
 
 router.post(
   "/users/acl",
   ensuredAuthenticated(),
-  new CreateUserAccessControlListController().handle
+  createUserAccessControlListController.handle
 );
 
 export { router as usersRouter };

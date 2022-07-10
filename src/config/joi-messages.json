@@ -1,0 +1,28 @@
+{
+    "string.base": "O campo {{#label}} não é um texto.",
+    "string.empty": "O campo {{#label}} não pode ser vazio.",
+    "string.alphanum": "O campo {{#label}} deve ter apenas caracteres alfa númericos.",
+    "string.min": "O campo {{#label}} deve ter no mínimo {{#limit}} caracteres.",
+    "string.max": "O campo {{#label}} deve ter no máximo {{#limit}} caracteres.",
+    "string.email": "O campo {{#label}} deve ser válido.",
+    "string.base64": "O campo {{#label}} deve ser uma string base64 válida.",
+    "string.creditCard": "O campo {{#label}} deve ser um número de cartão válido.",
+    "string.domain": "O campo {{#label}} deve ser um dominio válido.",
+    "string.guid": "O campo {{#label}} deve ser um guid válido.",
+    "string.ip": "O campo {{#label}} deve ser um ip válido.",
+    "string.length": "O campo {{#label}} deve ter {{#limit}} caracteres.",
+
+    "number.base": "O campo {{#label}} não é um número.",
+    "number.integer": "O campo {{#label}} não é um número inteiro válido.",
+    "number.min": "O campo {{#label}} deve ter no mínimo o valor {{#limit}}.",
+    "number.max": "O campo {{#label}} deve ter no máximo o valor {{#limit}}.",
+    "number.greater": "O campo {{label}} deve ser maior que {{limit}}",
+    "number.less": "O campo {{#label}} deve ser menor que {{#limit}}",
+    "number.positive": "O campo {{#label}} deve ser um número positivo",
+    "number.negative": "O campo {{#label}} deve ser um número negativo",
+    "number.port": "O campo {{#label}} deve ser uma porta válida [0 - 65535]",
+    
+    "any.required": "O campo {{#label}} não pode ser vazio.",
+    "any.empty": "O campo {{#label}} não pode ser vazio.",
+    "any.invalid": "O campo {{#label}} não é válido."
+}
