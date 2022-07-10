@@ -1,8 +1,6 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
-import { User } from "../entities/User";
-import { getRepository } from "typeorm";
-import { UserRepository } from "../repositories";
+import { UserRepository } from "../../repositories";
 
 type UserRequest = {
   username: string;

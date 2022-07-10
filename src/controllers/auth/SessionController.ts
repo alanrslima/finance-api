@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { SessionService } from "../services/SessionService";
+import { SessionService } from "../../services/auth/SessionService";
 
 export class SessionController {
   async handle(request: Request, response: Response) {

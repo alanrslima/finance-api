@@ -1,5 +1,5 @@
-import { Role } from "../entities/Role";
-import { RoleRepository } from "../repositories";
+import { Role } from "../../entities/Role";
+import { RoleRepository } from "../../repositories";
 
 type RoleRequest = {
   name: string;

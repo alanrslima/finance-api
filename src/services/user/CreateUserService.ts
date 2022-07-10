@@ -1,7 +1,6 @@
 import { hash } from "bcryptjs";
-import { getRepository } from "typeorm";
-import { User } from "../entities/User";
-import { UserRepository } from "../repositories";
+import { User } from "../../entities/User";
+import { UserRepository } from "../../repositories";
 
 type UserRequest = {
   username: string;

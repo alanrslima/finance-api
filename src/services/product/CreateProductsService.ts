@@ -1,4 +1,4 @@
-import { ProductRepository } from "../repositories";
+import { ProductRepository } from "../../repositories";
 
 type ProductRequest = {
   name: string;

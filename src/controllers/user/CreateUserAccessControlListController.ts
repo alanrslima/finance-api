@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateUserAccessControlListService } from "../services/CreateUserAccessControlListService";
+import { CreateUserAccessControlListService } from "../../services/user/CreateUserAccessControlListService";
 
 export class CreateUserAccessControlListController {
   async handle(request: Request, response: Response) {

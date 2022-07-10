@@ -1,5 +1,5 @@
-import { Product } from "../entities/Product";
-import { ProductRepository } from "../repositories";
+import { Product } from "../../entities/Product";
+import { ProductRepository } from "../../repositories";
 
 export class GetAllProductsService {
   async execute(): Promise<Product[]> {

@@ -1,9 +1,9 @@
-import { User } from "../entities/User";
+import { User } from "../../entities/User";
 import {
   PermissionRepository,
   RoleRepository,
   UserRepository,
-} from "../repositories";
+} from "../../repositories";
 
 type UserACLRequest = {
   userId: string;
