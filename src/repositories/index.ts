@@ -3,6 +3,7 @@ import { User } from "../entities/User";
 import { getRepository } from "typeorm";
 import { Product } from "../entities/Product";
 import { Permission } from "../entities/Permission";
+import { RefreshToken } from "../entities/RefreshToken";
 
 export const UserRepository = () => {
   return getRepository(User);
@@ -18,4 +19,8 @@ export const PermissionRepository = () => {
 
 export const ProductRepository = () => {
   return getRepository(Product);
+};
+
+export const RefreshTokenRepository = () => {
+  return getRepository(RefreshToken);
 };

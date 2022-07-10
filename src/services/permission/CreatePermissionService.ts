@@ -11,15 +11,14 @@ export class CreatePermissionService {
     name,
     description,
   }: PermissionRequest): Promise<Permission | Error> {
-    const repo = PermissionRepository();
+    const permissionRepo = PermissionRepository();
 
-    if (await repo.findOne({ name })) {
+    if (await permissionRepo.findOne({ name })) {
       return new Error("Permission already exists");
     }
 
-    const permission = repo.create({ name, description });
-
-    await repo.save(permission);
+    const permission = permissionRepo.create({ name, description });
+    await permissionRepo.save(permission);
 
     return permission;
   }

@@ -5,10 +5,12 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
+  OneToMany,
   RelationId,
 } from "typeorm";
 import { BaseEntity } from "./BaseEntity";
 import { Permission } from "./Permission";
+import { RefreshToken } from "./RefreshToken";
 import { Role } from "./Role";
 
 @Entity("users")
@@ -34,4 +36,7 @@ export class User extends BaseEntity {
     inverseJoinColumns: [{ name: "permission_id" }],
   })
   permissions: Permission[];
+
+  @OneToMany(() => RefreshToken, (refreshToken) => refreshToken.user)
+  refreshTokens: RefreshToken[];
 }

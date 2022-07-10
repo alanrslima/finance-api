@@ -8,14 +8,15 @@ type ProductRequest = {
 
 export class CreateProductsService {
   async execute({ name, description, price }: ProductRequest) {
-    const product = ProductRepository().create({
+    const productRepo = ProductRepository();
+    const product = productRepo.create({
       name,
       description,
       price,
     });
 
-    await ProductRepository().save(product);
+    await productRepo.save(product);
 
-    return product;
+    return productRepo;
   }
 }

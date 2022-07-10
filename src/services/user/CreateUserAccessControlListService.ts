@@ -17,9 +17,9 @@ export class CreateUserAccessControlListService {
     roles,
     permissions,
   }: UserACLRequest): Promise<User | Error> {
-    const repo = UserRepository();
+    const userRepo = UserRepository();
 
-    const user = await repo.findOne(userId);
+    const user = await userRepo.findOne(userId);
 
     if (!user) {
       return new Error("User does not exists!");
@@ -34,7 +34,7 @@ export class CreateUserAccessControlListService {
     user.permissions = permissionsExists;
     user.roles = rolesExists;
 
-    repo.save(user);
+    userRepo.save(user);
 
     return user;
   }

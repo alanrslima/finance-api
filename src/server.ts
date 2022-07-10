@@ -1,5 +1,6 @@
+import "express-async-errors";
 import "reflect-metadata";
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import { routeResponser } from "./middleware/routeResponser";
 import { rolesRouter } from "./routes/v1/roles";
 import { permissionsRouter } from "./routes/v1/permissions";
@@ -7,6 +8,7 @@ import { usersRouter } from "./routes/v1/users";
 import { authRouter } from "./routes/v1/auth";
 
 import "./database";
+import { productsRouter } from "./routes/v1/products";
 
 const app = express();
 
@@ -15,10 +17,30 @@ app.use(routeResponser);
 
 app.use(express.json());
 
-// Routes
+/**
+ * Routes
+ */
 app.use("/api/v1", authRouter);
 app.use("/api/v1", rolesRouter);
 app.use("/api/v1", permissionsRouter);
 app.use("/api/v1", usersRouter);
+app.use("/api/v1", productsRouter);
 
-app.listen(3000, () => console.log("Server is running"));
+/**
+ * Error handler
+ */
+app.use(
+  (error: Error, request: Request, response: Response, next: NextFunction) => {
+    return response.status(500).json({
+      status: "Error",
+      message: error.message,
+    });
+  }
+);
+
+/**
+ * Get port from environment and store in Express.
+ */
+const port = process.env.PORT ? process.env.PORT : 3000;
+
+app.listen(port, () => console.log(`Server is running on port ${port}`));
