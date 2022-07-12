@@ -1,18 +1,25 @@
 import { Request, Response } from "express";
-import { AuthService } from "../../services/auth/AuthService";
+import { AuthService } from "../../services/app/auth/AuthService";
+import Joi from "joi";
+import { StatusCode } from "../../types/statusCode";
+import { Validator } from "../../lib/Validator";
+
+const schema = Joi.object({
+  username: Joi.string().required(),
+  password: Joi.string().required(),
+});
 
 export class AuthController {
   async handle(request: Request, response: Response) {
-    const { username, password } = request.body;
+    const validator = new Validator(schema);
+    await validator.validateAsyncFields(request.body);
 
     const authService = new AuthService();
-    const result = await authService.execute({ username, password });
-
-    response.responser(400, "Error");
-
-    if (result instanceof Error) {
-      return response.status(400).json(result.message);
-    }
-    return response.json(result);
+    const logged = await authService.execute(request.body);
+    return response.responser(
+      StatusCode.Success,
+      "User logged success",
+      logged
+    );
   }
 }

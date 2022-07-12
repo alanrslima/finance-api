@@ -1,9 +1,9 @@
-import { User } from "../../entities/User";
+import { User } from "../../../entities/User";
 import {
   PermissionRepository,
   RoleRepository,
   UserRepository,
-} from "../../repositories";
+} from "../../../repositories";
 
 type UserACLRequest = {
   userId: string;
@@ -22,7 +22,7 @@ export class CreateUserAccessControlListService {
     const user = await userRepo.findOne(userId);
 
     if (!user) {
-      return new Error("User does not exists!");
+      throw new Error("User does not exists!");
     }
 
     const permissionsExists = await PermissionRepository().findByIds(

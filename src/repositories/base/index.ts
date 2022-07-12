@@ -4,13 +4,11 @@
 // const { InvalidBody } = require("../../../services/app/error");
 import joi from "joi";
 import { getRepository, Repository, EntityTarget } from "typeorm";
-import { BaseValidator } from "../../lib/validators";
+import { Validator } from "../../lib/Validator";
 
 // const { Op } = models.Sequelize;
 
 // const validator = new BaseValidator();
-
-const validator = new BaseValidator();
 
 export class BaseRepository<Entity> {
   private repository: Repository<Entity>;
@@ -44,10 +42,7 @@ export class BaseRepository<Entity> {
   async list() {}
 
   async validator(entity: Entity) {
-    try {
-      await this.schema.validateAsync(entity);
-    } catch (error) {
-      throw error;
-    }
+    const validator = new Validator(this.schema);
+    await validator.validateAsyncFields(entity);
   }
 }

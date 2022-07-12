@@ -9,8 +9,10 @@ import { authRouter } from "./routes/v1/auth";
 
 import "./database";
 import { productsRouter } from "./routes/v1/products";
+import { ErrorHandler } from "./lib/ErrorHandler";
 
 const app = express();
+const errorHandler = new ErrorHandler();
 
 // Use custom middlewares to responses in routes;
 app.use(routeResponser);
@@ -29,23 +31,7 @@ app.use("/api/v1", productsRouter);
 /**
  * Error handler
  */
-app.use(
-  (error: Error, request: Request, response: Response, next: NextFunction) => {
-    return response.responser(400, error.message);
-
-    // TODO: Improve error handler
-    switch (error.name) {
-      case "UrlNotFound":
-      case "InvalidBody":
-        return response.responser(400, error.message);
-      default:
-        return response.responser(
-          500,
-          "Ops ocorreu um erro, tente novamente mais tarde."
-        );
-    }
-  }
-);
+app.use(errorHandler.handle);
 
 /**
  * Get port from environment and store in Express.

@@ -1,18 +1,24 @@
 import { Request, Response } from "express";
-import { CreatePermissionService } from "../../services/permission/CreatePermissionService";
+import Joi from "joi";
+import { Validator } from "../../lib/Validator";
+import { CreatePermissionService } from "../../services/app/permission/CreatePermissionService";
+import { StatusCode } from "../../types/statusCode";
 
+const schema = Joi.object({
+  name: Joi.string().required(),
+  description: Joi.string().required(),
+});
 export class CreatePermissionController {
   async handle(request: Request, response: Response) {
-    const { name, description } = request.body;
+    const validator = new Validator(schema);
+    await validator.validateAsyncFields(request.body);
 
     const createPermissionService = new CreatePermissionService();
-
-    const result = await createPermissionService.execute({ name, description });
-
-    if (result instanceof Error) {
-      return response.status(400).json(result.message);
-    }
-
-    return response.json(result);
+    const permission = await createPermissionService.execute(request.body);
+    return response.responser(
+      StatusCode.Created,
+      "Permission created success",
+      permission
+    );
   }
 }

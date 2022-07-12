@@ -1,9 +1,11 @@
 // import { client } from "../../prisma/client";
-import { GenerateTokenProvider } from "../../provider/GenerateTokenProvider";
+import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
 import dayjs = require("dayjs");
-import { GenerateRefreshTokenProvider } from "../../provider/GenerateRefreshTokenProvider";
-import { RefreshTokenRepository } from "../../repositories";
-import { RefreshToken } from "../../entities/RefreshToken";
+import { GenerateRefreshTokenProvider } from "../../../provider/GenerateRefreshTokenProvider";
+import { RefreshTokenRepository } from "../../../repositories";
+import { RefreshToken } from "../../../entities/RefreshToken";
+import { ErrorGenerator } from "../../../lib/ErrorGenerator";
+import { StatusCode } from "../../../types/statusCode";
 
 type RefreshTokenRequest = {
   refresh_token: string;
@@ -17,7 +19,7 @@ class RefreshTokenService {
       relations: ["user"],
     });
     if (!refreshToken) {
-      throw new Error("Refresh token invalid");
+      throw new ErrorGenerator("Refresh token invalid", StatusCode.NotFound);
     }
 
     const generateTokenProvider = new GenerateTokenProvider();

@@ -1,6 +1,7 @@
 import { hash } from "bcryptjs";
-import { User } from "../../entities/User";
-import { UserRepository } from "../../repositories/user";
+import { User } from "../../../entities/User";
+import { ErrorGenerator } from "../../../lib/ErrorGenerator";
+import { UserRepository } from "../../../repositories/user";
 
 export class CreateUserService {
   async execute(user: User): Promise<User> {
