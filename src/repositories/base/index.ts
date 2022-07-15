@@ -58,8 +58,8 @@ export class BaseRepository<Entity> {
     return this.repository.findOne(options);
   }
 
-  async list() {
-    return this.repository.find();
+  async list(options?: FindManyOptions<Entity> | FindConditions<Entity>) {
+    return this.repository.find(options);
   }
 
   async listByIds(ids: any[], options?: FindManyOptions<Entity>) {

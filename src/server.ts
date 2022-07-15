@@ -9,6 +9,7 @@ import { authRouter } from "./routes/v1/auth";
 
 import "./database";
 import { productsRouter } from "./routes/v1/products";
+import { accountsRouter } from "./routes/v1/accounts";
 import { ErrorHandler } from "./lib/ErrorHandler";
 
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/v1", rolesRouter);
 app.use("/api/v1", permissionsRouter);
 app.use("/api/v1", usersRouter);
 app.use("/api/v1", productsRouter);
+app.use("/api/v1/accounts", accountsRouter);
 
 /**
  * Error handler

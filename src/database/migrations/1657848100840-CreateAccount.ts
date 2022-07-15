@@ -1,15 +1,29 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateRefreshTokens1657467839193 implements MigrationInterface {
+export class CreateAccount1657848100840 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "refresh_tokens",
+        name: "accounts",
         columns: [
           { name: "id", isPrimary: true, type: "varchar(36)" },
           {
-            name: "expiresIn",
+            name: "name",
+            type: "varchar(128)",
+          },
+          {
+            name: "openingBalance",
             type: "numeric",
+            default: 0,
+          },
+          {
+            name: "color",
+            type: "varchar(36)",
+          },
+          {
+            name: "isActive",
+            type: "boolean",
+            default: true,
           },
           {
             name: "userId",
@@ -26,7 +40,7 @@ export class CreateRefreshTokens1657467839193 implements MigrationInterface {
             columnNames: ["userId"],
             referencedColumnNames: ["id"],
             referencedTableName: "users",
-            name: "fk_refresh_tokens_user",
+            name: "fk_accounts_user",
             onDelete: "RESTRICT",
             onUpdate: "CASCADE",
           },
@@ -36,6 +50,6 @@ export class CreateRefreshTokens1657467839193 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("refresh_tokens");
+    await queryRunner.dropTable("accounts");
   }
 }

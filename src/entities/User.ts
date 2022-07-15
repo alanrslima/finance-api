@@ -1,13 +1,5 @@
-import {
-  Column,
-  Entity,
-  getRepository,
-  JoinColumn,
-  JoinTable,
-  ManyToMany,
-  OneToMany,
-  RelationId,
-} from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany } from "typeorm";
+import { Account } from "./Account";
 import { BaseEntity } from "./BaseEntity";
 import { Permission } from "./Permission";
 import { RefreshToken } from "./RefreshToken";
@@ -39,4 +31,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => RefreshToken, (refreshToken) => refreshToken.user)
   refreshTokens: RefreshToken[];
+
+  @OneToMany(() => Account, (account) => account.user)
+  accounts: Account[];
 }
