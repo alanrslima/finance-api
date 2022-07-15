@@ -1,17 +1,19 @@
 import { NextFunction, Request, Response } from "express";
-import { UserRepository } from "../repositories";
+import { ErrorGenerator } from "../lib/ErrorGenerator";
+import { UserRepository } from "../repositories/user";
+import { StatusCode } from "../types/statusCode";
 
 export function can(permissionsRoutes: string[]) {
-  return async (request: Request, response: Response, next: NextFunction) => {
+  return async (request: Request, _: Response, next: NextFunction) => {
     const { userId } = request;
-
-    const user = await UserRepository().findOne({
+    const userRepo = new UserRepository();
+    const user = await userRepo.read({
       where: { id: userId },
       relations: ["permissions"],
     });
 
     if (!user) {
-      return response.status(400).json("User does not exists");
+      throw new ErrorGenerator("User does not exists", StatusCode.BadRequest);
     }
 
     const permissionExists = user.permissions
@@ -19,7 +21,10 @@ export function can(permissionsRoutes: string[]) {
       .some((permission) => permissionsRoutes.includes(permission));
 
     if (!permissionExists) {
-      return response.status(401).end();
+      throw new ErrorGenerator(
+        "User does not have permissions to access the resource",
+        StatusCode.Unauthorized
+      );
     }
 
     return next();
@@ -29,8 +34,8 @@ export function can(permissionsRoutes: string[]) {
 export function is(rolesRoutes: string[]) {
   return async (request: Request, response: Response, next: NextFunction) => {
     const { userId } = request;
-
-    const user = await UserRepository().findOne({
+    const userRepo = new UserRepository();
+    const user = await userRepo.read({
       where: { id: userId },
       relations: ["roles"],
     });

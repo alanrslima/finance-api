@@ -1,5 +1,7 @@
 import { Role } from "../../../entities/Role";
-import { RoleRepository } from "../../../repositories";
+import { ErrorGenerator } from "../../../lib/ErrorGenerator";
+import { RoleRepository } from "../../../repositories/role";
+import { StatusCode } from "../../../types/statusCode";
 
 type RoleRequest = {
   name: string;
@@ -8,16 +10,12 @@ type RoleRequest = {
 
 export class CreateRoleService {
   async execute({ name, description }: RoleRequest): Promise<Role | Error> {
-    const repo = RoleRepository();
+    const roleRepo = new RoleRepository();
 
-    if (await repo.findOne({ name })) {
-      return new Error("Role already exists");
+    if (await roleRepo.read({ name })) {
+      return new ErrorGenerator("Role already exists", StatusCode.BadRequest);
     }
-
-    const role = repo.create({ name, description });
-
-    await repo.save(role);
-
+    const role = await roleRepo.create({ name, description });
     return role;
   }
 }

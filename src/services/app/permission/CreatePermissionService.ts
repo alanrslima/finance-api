@@ -1,5 +1,7 @@
 import { Permission } from "../../../entities/Permission";
-import { PermissionRepository } from "../../../repositories";
+import { ErrorGenerator } from "../../../lib/ErrorGenerator";
+import { PermissionRepository } from "../../../repositories/permission";
+import { StatusCode } from "../../../types/statusCode";
 
 type PermissionRequest = {
   name: string;
@@ -11,15 +13,16 @@ export class CreatePermissionService {
     name,
     description,
   }: PermissionRequest): Promise<Permission | Error> {
-    const permissionRepo = PermissionRepository();
+    const permissionRepo = new PermissionRepository();
 
-    if (await permissionRepo.findOne({ name })) {
-      return new Error("Permission already exists");
+    if (await permissionRepo.read({ name })) {
+      return new ErrorGenerator(
+        "Permission already exists",
+        StatusCode.BadRequest
+      );
     }
 
-    const permission = permissionRepo.create({ name, description });
-    await permissionRepo.save(permission);
-
+    const permission = await permissionRepo.create({ name, description });
     return permission;
   }
 }

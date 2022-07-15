@@ -1,16 +1,16 @@
 import { compare } from "bcryptjs";
-import { RefreshToken } from "../../../entities/RefreshToken";
 import { User } from "../../../entities/User";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { GenerateRefreshTokenProvider } from "../../../provider/GenerateRefreshTokenProvider";
 import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
-import { RefreshTokenRepository, UserRepository } from "../../../repositories";
+import { RefreshTokenRepository } from "../../../repositories/refreshToken";
+import { UserRepository } from "../../../repositories/user";
 import { StatusCode } from "../../../types/statusCode";
 
 export class AuthService {
   async execute(user: User) {
-    const userRepo = UserRepository();
-    const userExisted = await userRepo.findOne({ username: user.username });
+    const userRepo = new UserRepository();
+    const userExisted = await userRepo.read({ username: user.username });
 
     if (!userExisted) {
       throw new ErrorGenerator("User dos not exists!", StatusCode.Unauthorized);
@@ -29,14 +29,8 @@ export class AuthService {
       userId: userExisted.id,
     });
 
-    // Delete refresh user tokens
-    const refreshTokenRepo = RefreshTokenRepository();
-    await refreshTokenRepo
-      .createQueryBuilder()
-      .delete()
-      .from(RefreshToken)
-      .where("userId = :id", { id: userExisted.id })
-      .execute();
+    const refreshTokenRepo = new RefreshTokenRepository();
+    await refreshTokenRepo.delete("userId = :id", { id: userExisted.id });
 
     const generateRefreshTokenProvider = new GenerateRefreshTokenProvider();
     const refreshToken = await generateRefreshTokenProvider.execute({

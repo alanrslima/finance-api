@@ -1,4 +1,4 @@
-import { ProductRepository } from "../../../repositories";
+import { ProductRepository } from "../../../repositories/product";
 
 type ProductRequest = {
   name: string;
@@ -8,15 +8,13 @@ type ProductRequest = {
 
 export class CreateProductsService {
   async execute({ name, description, price }: ProductRequest) {
-    const productRepo = ProductRepository();
-    const product = productRepo.create({
+    const productRepo = new ProductRepository();
+    const product = await productRepo.create({
       name,
       description,
       price,
     });
 
-    await productRepo.save(product);
-
-    return productRepo;
+    return product;
   }
 }

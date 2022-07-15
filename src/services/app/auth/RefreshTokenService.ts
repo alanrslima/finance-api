@@ -2,8 +2,7 @@
 import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
 import dayjs = require("dayjs");
 import { GenerateRefreshTokenProvider } from "../../../provider/GenerateRefreshTokenProvider";
-import { RefreshTokenRepository } from "../../../repositories";
-import { RefreshToken } from "../../../entities/RefreshToken";
+import { RefreshTokenRepository } from "../../../repositories/refreshToken";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { StatusCode } from "../../../types/statusCode";
 
@@ -13,8 +12,8 @@ type RefreshTokenRequest = {
 
 class RefreshTokenService {
   async execute({ refresh_token }: RefreshTokenRequest) {
-    const refreshTokenRepo = RefreshTokenRepository();
-    const refreshToken = await refreshTokenRepo.findOne({
+    const refreshTokenRepo = new RefreshTokenRepository();
+    const refreshToken = await refreshTokenRepo.read({
       where: { id: refresh_token },
       relations: ["user"],
     });
@@ -31,12 +30,9 @@ class RefreshTokenService {
       dayjs.unix(refreshToken.expiresIn)
     );
     if (refreshTokenExpired) {
-      await refreshTokenRepo
-        .createQueryBuilder()
-        .delete()
-        .from(RefreshToken)
-        .where("userId = :id", { id: refreshToken.user.id })
-        .execute();
+      await refreshTokenRepo.delete("userId = :id", {
+        id: refreshToken.user.id,
+      });
 
       const generateRefreshTokenProvider = new GenerateRefreshTokenProvider();
       const newRefreshToken = await generateRefreshTokenProvider.execute({

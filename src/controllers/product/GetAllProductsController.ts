@@ -3,7 +3,7 @@ import { GetAllProductsService } from "../../services/app/product/GetAllProducts
 import { StatusCode } from "../../types/statusCode";
 
 export class GetAllProductsController {
-  async handle(request: Request, response: Response) {
+  async handle(_: Request, response: Response) {
     const getAllProductsService = new GetAllProductsService();
     const products = await getAllProductsService.execute();
     return response.responser(

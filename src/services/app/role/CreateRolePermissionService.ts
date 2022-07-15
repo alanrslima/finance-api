@@ -1,5 +1,6 @@
 import { Role } from "../../../entities/Role";
-import { PermissionRepository, RoleRepository } from "../../../repositories";
+import { PermissionRepository } from "../../../repositories/permission";
+import { RoleRepository } from "../../../repositories/role";
 
 type RolePermissionRequest = {
   roleId: string;
@@ -11,22 +12,19 @@ export class CreateRolePermissionService {
     roleId,
     permissions,
   }: RolePermissionRequest): Promise<Role | Error> {
-    const roleRepo = RoleRepository();
-
-    const role = await roleRepo.findOne(roleId);
+    const roleRepo = new RoleRepository();
+    const role = await roleRepo.read(roleId);
 
     if (!role) {
       return new Error("Role does not exists!");
     }
 
-    const permissionsExists = await PermissionRepository().findByIds(
-      permissions
-    );
+    const permissionRepo = new PermissionRepository();
+    const permissionsExists = await permissionRepo.listByIds(permissions);
 
     role.permissions = permissionsExists;
 
-    await roleRepo.save(role);
-
+    await roleRepo.create(role);
     return role;
   }
 }
