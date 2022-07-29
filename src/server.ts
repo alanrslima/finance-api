@@ -6,6 +6,8 @@ import { rolesRouter } from "./routes/v1/roles";
 import { permissionsRouter } from "./routes/v1/permissions";
 import { usersRouter } from "./routes/v1/users";
 import { authRouter } from "./routes/v1/auth";
+import session from "express-session";
+import passport from "passport";
 
 import "./database";
 import { productsRouter } from "./routes/v1/products";
@@ -14,6 +16,20 @@ import { ErrorHandler } from "./lib/ErrorHandler";
 
 const app = express();
 const errorHandler = new ErrorHandler();
+
+// Configure session;
+app.use(
+  session({
+    key: process.env.GITHUB_CLIENT_ID,
+    secret: "]A!m8L?%&G!b=9?6h[", // this can be any name. Its the secret to include in cookie
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Configure passport ADFS;
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Use custom middlewares to responses in routes;
 app.use(routeResponser);

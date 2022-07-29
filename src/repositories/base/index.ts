@@ -42,20 +42,22 @@ export class BaseRepository<Entity> {
 
   async create(entity: DeepPartial<Entity>) {
     const obj = this.repository.create(entity);
-    const result = await this.repository.save(obj);
+    const result = await this.repository.save(obj as DeepPartial<Entity>);
     return result;
   }
 
   async read(
-    options:
-      | FindOneOptions<Entity>
-      | FindConditions<Entity>
-      | string
-      | number
-      | Date
-      | ObjectID
-  ) {
-    return this.repository.findOne(options);
+    id?: string | number | Date | ObjectID,
+    options?: FindOneOptions<Entity>
+  );
+  async read(options?: FindOneOptions<Entity>);
+  async read(
+    conditions?: FindConditions<Entity>,
+    options?: FindOneOptions<Entity>
+  );
+
+  async read(id?, options?) {
+    return this.repository.findOne(id, options);
   }
 
   async list(options?: FindManyOptions<Entity> | FindConditions<Entity>) {

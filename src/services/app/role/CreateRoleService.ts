@@ -1,4 +1,3 @@
-import { Role } from "../../../entities/Role";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { RoleRepository } from "../../../repositories/role";
 import { StatusCode } from "../../../types/statusCode";
@@ -9,7 +8,7 @@ type RoleRequest = {
 };
 
 export class CreateRoleService {
-  async execute({ name, description }: RoleRequest): Promise<Role | Error> {
+  async execute({ name, description }: RoleRequest) {
     const roleRepo = new RoleRepository();
 
     if (await roleRepo.read({ name })) {
