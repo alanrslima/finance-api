@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
-dotenv.config();
+console.log(process.env.NODE_ENV);
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 import "express-async-errors";
 import "reflect-metadata";
