@@ -1,6 +1,9 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+
 import "express-async-errors";
 import "reflect-metadata";
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
 import { routeResponser } from "./middleware/routeResponser";
 import { rolesRouter } from "./routes/v1/roles";
 import { permissionsRouter } from "./routes/v1/permissions";
@@ -9,10 +12,12 @@ import { authRouter } from "./routes/v1/auth";
 import session from "express-session";
 import passport from "passport";
 
-import "./database";
+import { database } from "./database";
 import { productsRouter } from "./routes/v1/products";
 import { accountsRouter } from "./routes/v1/accounts";
 import { ErrorHandler } from "./lib/ErrorHandler";
+
+database.create();
 
 const app = express();
 const errorHandler = new ErrorHandler();
@@ -51,9 +56,4 @@ app.use("/api/v1/accounts", accountsRouter);
  */
 app.use(errorHandler.handle);
 
-/**
- * Get port from environment and store in Express.
- */
-const port = process.env.PORT ? process.env.PORT : 3000;
-
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+export default app;

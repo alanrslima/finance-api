@@ -21,8 +21,8 @@ export const routeResponser = (
     // }
 
     if (error) {
-      console.error(message, error);
-      console.log("Error details:", error);
+      // console.error(message, error);
+      // console.log("Error details:", error);
     }
 
     return response.status(status).type(type).send({
