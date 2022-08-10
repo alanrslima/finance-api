@@ -1,2 +1,2 @@
-release: ./src/scripts/release-tasks.sh
+release: npm run typeorm migration:run
 web: npm start
