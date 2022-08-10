@@ -1,5 +1,4 @@
 import * as dotenv from "dotenv";
-console.log(process.env.NODE_ENV);
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 import "express-async-errors";

@@ -17,12 +17,13 @@ afterEach(async () => {
 });
 
 describe("POST em /users", () => {
+  let newUsername = `user-test-${new Date().toISOString()}`;
   it("Should create a new user", async () => {
     await request(app)
       .post("/api/v1/users")
       .send({
         password: "password",
-        username: `user-test-${new Date().toISOString()}`,
+        username: newUsername,
       })
       .set("Accept", "application/json")
       .expect(201)
@@ -34,7 +35,7 @@ describe("POST em /users", () => {
       .post("/api/v1/users")
       .send({
         password: "password",
-        username: "username",
+        username: newUsername,
       })
       .set("Accept", "application/json")
       .expect(400)
@@ -51,7 +52,6 @@ describe("POST em /users", () => {
       .set("Accept", "application/json")
       .expect(400)
       .expect("Content-Type", /json/);
-    console.log(response.body);
     expect(response.body.message).toEqual('"username" is required');
   });
 });
