@@ -4,7 +4,7 @@ module.exports = {
   host: process.env.DB_HOST,
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: "finance",
+  database: process.env.DB_NAME,
   entities: ["./src/entities/*.ts"],
   migrations: ["./src/database/migrations/*.ts"],
   cli: {
