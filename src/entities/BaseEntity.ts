@@ -6,7 +6,7 @@ export class BaseEntity {
   id: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   constructor() {
     if (!this.id) {

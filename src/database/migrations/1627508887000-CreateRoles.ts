@@ -20,7 +20,7 @@ export class CreateRoles1627508887000 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "created_at",
+            name: "createdAt",
             type: "timestamp",
             default: "now()",
           },

@@ -13,7 +13,6 @@ import session from "express-session";
 import passport from "passport";
 
 import { database } from "./database";
-import { productsRouter } from "./routes/v1/products";
 import { accountsRouter } from "./routes/v1/accounts";
 import { ErrorHandler } from "./lib/ErrorHandler";
 
@@ -48,7 +47,6 @@ app.use("/api/v1", authRouter);
 app.use("/api/v1", rolesRouter);
 app.use("/api/v1", permissionsRouter);
 app.use("/api/v1", usersRouter);
-app.use("/api/v1", productsRouter);
 app.use("/api/v1/accounts", accountsRouter);
 
 /**

@@ -10,7 +10,7 @@ import { StatusCode } from "../../../types/statusCode";
 export class AuthService {
   async execute(user: User) {
     const userRepo = new UserRepository();
-    const userExisted = await userRepo.read({ username: user.username });
+    const userExisted = await userRepo.read({ email: user.email });
 
     if (!userExisted) {
       throw new ErrorGenerator("User dos not exists!", StatusCode.Unauthorized);

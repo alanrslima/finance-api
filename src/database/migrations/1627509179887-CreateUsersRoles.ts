@@ -6,20 +6,20 @@ export class CreateUsersRoles1627509179887 implements MigrationInterface {
       new Table({
         name: "users_roles",
         columns: [
-          { name: "role_id", type: "varchar(36)" },
-          { name: "user_id", type: "varchar(36)" },
+          { name: "roleId", type: "varchar(36)" },
+          { name: "userId", type: "varchar(36)" },
         ],
         foreignKeys: [
           {
-            columnNames: ["role_id"],
+            columnNames: ["roleId"],
             referencedColumnNames: ["id"],
             referencedTableName: "roles",
-            name: "fk_roles_user",
+            name: "fk_roles_users",
             onDelete: "RESTRICT",
             onUpdate: "CASCADE",
           },
           {
-            columnNames: ["user_id"],
+            columnNames: ["userId"],
             referencedColumnNames: ["id"],
             referencedTableName: "users",
             name: "fk_users_roles",

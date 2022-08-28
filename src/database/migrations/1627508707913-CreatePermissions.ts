@@ -20,7 +20,7 @@ export class CreatePermissions1627508707913 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "created_at",
+            name: "createdAt",
             type: "timestamp",
             default: "now()",
           },

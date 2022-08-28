@@ -1,12 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import Joi from "joi";
-import { ErrorGenerator } from "../../lib/ErrorGenerator";
 import { Validator } from "../../lib/Validator";
 import { CreateUserService } from "../../services/app/user/CreateUserService";
 import { StatusCode } from "../../types/statusCode";
 
 const schema = Joi.object({
-  username: Joi.string().required(),
+  email: Joi.string().email().required(),
   password: Joi.string().required(),
 });
 export class CreateUserController {

@@ -16,7 +16,7 @@ export class CreateRefreshTokens1657467839193 implements MigrationInterface {
             type: "varchar(36)",
           },
           {
-            name: "created_at",
+            name: "createdAt",
             type: "timestamp",
             default: "now()",
           },

@@ -7,7 +7,7 @@ import { StatusCode } from "../../../types/statusCode";
 export class CreateUserService {
   async execute(user: User): Promise<User> {
     const userRepo = new UserRepository();
-    const existUser = await userRepo.read({ username: user.username });
+    const existUser = await userRepo.read({ email: user.email });
     if (existUser) {
       throw new ErrorGenerator("User already exists", StatusCode.BadRequest);
     }
