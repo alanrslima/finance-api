@@ -16,16 +16,16 @@ export function can(permissionsRoutes: string[]) {
       throw new ErrorGenerator("User does not exists", StatusCode.BadRequest);
     }
 
-    const permissionExists = user.permissions
-      .map((permission) => permission.name)
-      .some((permission) => permissionsRoutes.includes(permission));
+    // const permissionExists = user.permissions
+    //   .map((permission) => permission.name)
+    //   .some((permission) => permissionsRoutes.includes(permission));
 
-    if (!permissionExists) {
-      throw new ErrorGenerator(
-        "User does not have permissions to access the resource",
-        StatusCode.Unauthorized
-      );
-    }
+    // if (!permissionExists) {
+    //   throw new ErrorGenerator(
+    //     "User does not have permissions to access the resource",
+    //     StatusCode.Unauthorized
+    //   );
+    // }
 
     return next();
   };

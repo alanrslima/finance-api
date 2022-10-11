@@ -10,13 +10,13 @@ const authController = new AuthController();
 const refreshTokenController = new RefreshTokenController();
 const callbackController = new CallbackController();
 
-router.post("/auth/login", authController.handle);
-router.post("/auth/refresh-token", refreshTokenController.handle);
+router.post("/login", authController.handle);
+router.post("/refresh-token", refreshTokenController.handle);
 
 // Github OAUTH
-router.get("/auth/github/login", passportGithub.authenticate("oauth2"));
+router.get("/github/login", passportGithub.authenticate("oauth2"));
 router.get(
-  "/auth/github/callback",
+  "/github/callback",
   passportGithub.authenticate("oauth2", { failureRedirect: "/login" }),
   callbackController.handle
 );

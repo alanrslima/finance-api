@@ -50,13 +50,13 @@ export class BaseRepository<Entity> {
     id?: string | number | Date | ObjectID,
     options?: FindOneOptions<Entity>
   );
-  async read(options?: FindOneOptions<Entity>);
+  async read(options?: FindOneOptions<Entity>): Promise<Entity | undefined>;
   async read(
     conditions?: FindConditions<Entity>,
     options?: FindOneOptions<Entity>
-  );
+  ): Promise<Entity | undefined>;
 
-  async read(id?, options?) {
+  async read(id?, options?): Promise<Entity | undefined> {
     return this.repository.findOne(id, options);
   }
 
@@ -68,7 +68,9 @@ export class BaseRepository<Entity> {
     return this.repository.findByIds(ids, options);
   }
 
-  async update() {}
+  async update(entity: DeepPartial<Entity>) {
+    return this.repository.save(entity);
+  }
 
   async delete(
     where:

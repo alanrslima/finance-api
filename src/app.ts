@@ -43,10 +43,10 @@ app.use(express.json());
 /**
  * Routes
  */
-app.use("/api/v1", authRouter);
-app.use("/api/v1", rolesRouter);
-app.use("/api/v1", permissionsRouter);
-app.use("/api/v1", usersRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/roles", rolesRouter);
+app.use("/api/v1/permissions", permissionsRouter);
+app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/accounts", accountsRouter);
 
 /**

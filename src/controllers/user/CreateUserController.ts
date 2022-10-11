@@ -5,8 +5,10 @@ import { CreateUserService } from "../../services/app/user/CreateUserService";
 import { StatusCode } from "../../types/statusCode";
 
 const schema = Joi.object({
+  firstName: Joi.string(),
+  lastName: Joi.string(),
   email: Joi.string().email().required(),
-  password: Joi.string().required(),
+  password: Joi.string().min(8).required(),
 });
 export class CreateUserController {
   async handle(request: Request, response: Response, next: NextFunction) {

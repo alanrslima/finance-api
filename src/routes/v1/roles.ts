@@ -7,12 +7,12 @@ import { is } from "../../middleware/permissions";
 const router = Router();
 
 router.post(
-  "/roles",
+  "/",
   ensuredAuthenticated(),
   is(["admin"]),
   new CreateRoleController().handle
 );
 
-router.post("/roles/:roleId", new CreateRolePermissionController().handle);
+router.post("/:roleId", new CreateRolePermissionController().handle);
 
 export { router as rolesRouter };
