@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "typeorm": "NODE_ENV=development ts-node-dev ./node_modules/typeorm/cli",
     "start": "ts-node server.ts",
     "dev": "NODE_ENV=development ts-node-dev server.ts",
     "test": "jest",
@@ -22,6 +22,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "passport": "^0.6.0",
     "passport-github": "^1.1.0",
     "passport-oauth2": "^1.6.1",

@@ -5,7 +5,6 @@ import Joi from "joi";
 import { StatusCode } from "../../types/statusCode";
 
 const schema = Joi.object({
-  permissions: Joi.array().items(Joi.string()).required(),
   roles: Joi.array().items(Joi.string()).required(),
 });
 
