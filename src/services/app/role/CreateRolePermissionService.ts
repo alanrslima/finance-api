@@ -1,6 +1,6 @@
 import { Role } from "../../../entities/Role";
-import { PermissionRepository } from "../../../repositories/permission";
-import { RoleRepository } from "../../../repositories/role";
+import { PermissionRepository } from "../../../repositories/permission/PermissionRepository";
+import { RoleRepository } from "../../../repositories/role/RoleRepository";
 
 type RolePermissionRequest = {
   roleId: string;
@@ -8,23 +8,28 @@ type RolePermissionRequest = {
 };
 
 export class CreateRolePermissionService {
+  constructor(
+    private roleRepository: RoleRepository,
+    private permissionRepository: PermissionRepository
+  ) {}
+
   async execute({
     roleId,
     permissions,
   }: RolePermissionRequest): Promise<Role | Error> {
-    const roleRepo = new RoleRepository();
-    const role = await roleRepo.read(roleId);
+    const role = await this.roleRepository.read(roleId);
 
     if (!role) {
       return new Error("Role does not exists!");
     }
 
-    const permissionRepo = new PermissionRepository();
-    const permissionsExists = await permissionRepo.listByIds(permissions);
+    const permissionsExists = await this.permissionRepository.listByIds(
+      permissions
+    );
 
     role.permissions = permissionsExists;
 
-    await roleRepo.create(role);
+    await this.roleRepository.create(role);
     return role;
   }
 }

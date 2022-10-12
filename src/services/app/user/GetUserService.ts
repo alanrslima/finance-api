@@ -1,10 +1,11 @@
 import { User } from "../../../entities/User";
-import { UserRepository } from "../../../repositories/user";
+import { UserRepository } from "../../../repositories/user/UserRepository";
 
 export class GetUserService {
+  constructor(private userRepository: UserRepository) {}
+
   async execute({ userId }: { userId: string }): Promise<User[]> {
-    const userRepo = new UserRepository();
-    const user = await userRepo.list({
+    const user = await this.userRepository.list({
       where: { id: userId },
     });
     return user;

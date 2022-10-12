@@ -3,6 +3,8 @@ import { Validator } from "../../lib/Validator";
 import { CreateUserAccessControlListService } from "../../services/app/user/CreateUserAccessControlListService";
 import Joi from "joi";
 import { StatusCode } from "../../types/statusCode";
+import { DbUserRepository } from "../../repositories/user/DbUserRepository";
+import { DbRoleRepository } from "../../repositories/role/DbRoleRepository";
 
 const schema = Joi.object({
   roles: Joi.array().items(Joi.string()).required(),
@@ -13,7 +15,12 @@ export class CreateUserAccessControlListController {
     const validator = new Validator(schema);
     await validator.validateAsyncFields(request.body);
 
-    const createUserACLService = new CreateUserAccessControlListService();
+    const userRepository = new DbUserRepository();
+    const roleRepository = new DbRoleRepository();
+    const createUserACLService = new CreateUserAccessControlListService(
+      userRepository,
+      roleRepository
+    );
     const result = await createUserACLService.execute({
       userId: request.userId,
       ...request.body,

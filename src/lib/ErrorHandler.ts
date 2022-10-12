@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 
 export class ErrorHandler {
   async handle(err: any, req: Request, res: Response, next: NextFunction) {
-    console.error(err);
     // logger.error(err);
     // logger.error(err.stack);
     switch (err.name) {

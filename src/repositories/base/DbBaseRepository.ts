@@ -1,7 +1,3 @@
-// const models = require("../models");
-// const errors = require("../../../services/app/error");
-// const { BaseValidator } = require("../../../services/app/validators");
-// const { InvalidBody } = require("../../../services/app/error");
 import joi from "joi";
 import {
   getRepository,
@@ -16,12 +12,9 @@ import {
   FindManyOptions,
 } from "typeorm";
 import { Validator } from "../../lib/Validator";
+import { BaseRepository } from "./BaseRepository";
 
-// const { Op } = models.Sequelize;
-
-// const validator = new BaseValidator();
-
-export class BaseRepository<Entity> {
+export class DbBaseRepository<Entity> implements BaseRepository<Entity> {
   private repository: Repository<Entity>;
   private entity: EntityTarget<Entity>;
   private filterable: string[];
@@ -41,6 +34,7 @@ export class BaseRepository<Entity> {
   }
 
   async create(entity: DeepPartial<Entity>) {
+    await this.validator(entity);
     const obj = this.repository.create(entity);
     const result = await this.repository.save(obj as DeepPartial<Entity>);
     return result;
@@ -69,6 +63,7 @@ export class BaseRepository<Entity> {
   }
 
   async update(entity: DeepPartial<Entity>) {
+    await this.validator(entity);
     return this.repository.save(entity);
   }
 
@@ -89,7 +84,7 @@ export class BaseRepository<Entity> {
       .execute();
   }
 
-  private async validator(entity: Entity) {
+  private async validator(entity: DeepPartial<Entity>) {
     const validator = new Validator(this.schema);
     await validator.validateAsyncFields(entity);
   }

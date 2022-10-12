@@ -1,6 +1,6 @@
 import { User } from "../../../entities/User";
-import { RoleRepository } from "../../../repositories/role";
-import { UserRepository } from "../../../repositories/user";
+import { RoleRepository } from "../../../repositories/role/RoleRepository";
+import { UserRepository } from "../../../repositories/user/UserRepository";
 
 type UserACLRequest = {
   userId: string;
@@ -8,20 +8,22 @@ type UserACLRequest = {
 };
 
 export class CreateUserAccessControlListService {
+  constructor(
+    private userRepository: UserRepository,
+    private roleRepository: RoleRepository
+  ) {}
+
   async execute({ userId, roles }: UserACLRequest): Promise<User | Error> {
-    const userRepo = new UserRepository();
-    const user = await userRepo.read(userId);
+    const user = await this.userRepository.read(userId);
 
     if (!user) {
       throw new Error("User does not exists!");
     }
 
-    const roleRepo = new RoleRepository();
-    const rolesExists = await roleRepo.listByIds(roles);
+    const rolesExists = await this.roleRepository.listByIds(roles);
 
     user.roles = rolesExists;
-
-    userRepo.create(user);
+    this.userRepository.create(user);
     return user;
   }
 }

@@ -3,14 +3,18 @@ import { User } from "../../../entities/User";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { GenerateRefreshTokenProvider } from "../../../provider/GenerateRefreshTokenProvider";
 import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
-import { RefreshTokenRepository } from "../../../repositories/refreshToken";
-import { UserRepository } from "../../../repositories/user";
+import { RefreshTokenRepository } from "../../../repositories/refreshToken/RefreshTokenRepository";
+import { UserRepository } from "../../../repositories/user/UserRepository";
 import { StatusCode } from "../../../types/statusCode";
 
 export class AuthService {
+  constructor(
+    private userRepository: UserRepository,
+    private refreshTokenRepository: RefreshTokenRepository
+  ) {}
+
   async execute(user: User) {
-    const userRepo = new UserRepository();
-    const userExisted = await userRepo.read({ email: user.email });
+    const userExisted = await this.userRepository.read({ email: user.email });
 
     if (!userExisted) {
       throw new ErrorGenerator(
@@ -39,10 +43,13 @@ export class AuthService {
       userId: userExisted.id,
     });
 
-    const refreshTokenRepo = new RefreshTokenRepository();
-    await refreshTokenRepo.delete("userId = :id", { id: userExisted.id });
+    await this.refreshTokenRepository.delete("userId = :id", {
+      id: userExisted.id,
+    });
 
-    const generateRefreshTokenProvider = new GenerateRefreshTokenProvider();
+    const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
+      this.refreshTokenRepository
+    );
     const refreshToken = await generateRefreshTokenProvider.execute({
       user: userExisted,
     });

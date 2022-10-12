@@ -3,6 +3,7 @@ import Joi from "joi";
 
 export const refreshTokenSchema = Joi.object({
   expiresIn: Joi.number().required(),
-  userId: Joi.string().required(),
+  user: Joi.object(),
+  // userId: Joi.string().required(),
 });
 //   .messages(joiMessages);

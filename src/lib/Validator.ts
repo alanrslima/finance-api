@@ -14,7 +14,6 @@ export class Validator {
       // await this.schema.validateAsync(entity, { abortEarly: false });
       await this.schema.validateAsync(entity);
     } catch (error) {
-      console.error(error);
       throw new ErrorGenerator(error.message, StatusCode.BadRequest);
     }
   }

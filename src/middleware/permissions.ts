@@ -1,20 +1,20 @@
 import { NextFunction, Request, Response } from "express";
 import { ErrorGenerator } from "../lib/ErrorGenerator";
-import { UserRepository } from "../repositories/user";
+// import { UserRepository } from "../repositories/user";
 import { StatusCode } from "../types/statusCode";
 
 export function can(permissionsRoutes: string[]) {
   return async (request: Request, _: Response, next: NextFunction) => {
     const { userId } = request;
-    const userRepo = new UserRepository();
-    const user = await userRepo.read({
-      where: { id: userId },
-      relations: ["permissions"],
-    });
+    // const userRepo = new UserRepository();
+    // const user = await userRepo.read({
+    //   where: { id: userId },
+    //   relations: ["permissions"],
+    // });
 
-    if (!user) {
-      throw new ErrorGenerator("User does not exists", StatusCode.BadRequest);
-    }
+    // if (!user) {
+    //   throw new ErrorGenerator("User does not exists", StatusCode.BadRequest);
+    // }
 
     // const permissionExists = user.permissions
     //   .map((permission) => permission.name)
@@ -33,24 +33,24 @@ export function can(permissionsRoutes: string[]) {
 
 export function is(rolesRoutes: string[]) {
   return async (request: Request, response: Response, next: NextFunction) => {
-    const { userId } = request;
-    const userRepo = new UserRepository();
-    const user = await userRepo.read({
-      where: { id: userId },
-      relations: ["roles"],
-    });
+    // const { userId } = request;
+    // const userRepo = new UserRepository();
+    // const user = await userRepo.read({
+    //   where: { id: userId },
+    //   relations: ["roles"],
+    // });
 
-    if (!user) {
-      return response.status(400).json("User does not exists");
-    }
+    // if (!user) {
+    //   return response.status(400).json("User does not exists");
+    // }
 
-    const roleExists = user.roles
-      .map((role) => role.name)
-      .some((role) => rolesRoutes.includes(role));
+    // const roleExists = user.roles
+    //   .map((role) => role.name)
+    //   .some((role) => rolesRoutes.includes(role));
 
-    if (!roleExists) {
-      return response.status(401).end();
-    }
+    // if (!roleExists) {
+    //   return response.status(401).end();
+    // }
 
     return next();
   };

@@ -1,18 +1,19 @@
 import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
 import dayjs = require("dayjs");
 import { GenerateRefreshTokenProvider } from "../../../provider/GenerateRefreshTokenProvider";
-import { RefreshTokenRepository } from "../../../repositories/refreshToken";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { StatusCode } from "../../../types/statusCode";
+import { RefreshTokenRepository } from "../../../repositories/refreshToken/RefreshTokenRepository";
 
 type RefreshTokenRequest = {
   refresh_token: string;
 };
 
 class RefreshTokenService {
+  constructor(private refreshTokenRepository: RefreshTokenRepository) {}
+
   async execute({ refresh_token }: RefreshTokenRequest) {
-    const refreshTokenRepo = new RefreshTokenRepository();
-    const refreshToken = await refreshTokenRepo.read({
+    const refreshToken = await this.refreshTokenRepository.read({
       where: { id: refresh_token },
       relations: ["user"],
     });
@@ -29,11 +30,13 @@ class RefreshTokenService {
       dayjs.unix(refreshToken.expiresIn)
     );
     if (refreshTokenExpired) {
-      await refreshTokenRepo.delete("userId = :id", {
+      await this.refreshTokenRepository.delete("userId = :id", {
         id: refreshToken.user.id,
       });
 
-      const generateRefreshTokenProvider = new GenerateRefreshTokenProvider();
+      const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
+        this.refreshTokenRepository
+      );
       const newRefreshToken = await generateRefreshTokenProvider.execute({
         user: refreshToken.user,
       });

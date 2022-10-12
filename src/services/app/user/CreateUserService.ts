@@ -1,17 +1,18 @@
 import { hash } from "bcryptjs";
 import { User } from "../../../entities/User";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
-import { UserRepository } from "../../../repositories/user";
+import { UserRepository } from "../../../repositories/user/UserRepository";
 import { StatusCode } from "../../../types/statusCode";
 
 export class CreateUserService {
+  constructor(private userRepository: UserRepository) {}
+
   async execute(user: User): Promise<User> {
-    const userRepo = new UserRepository();
-    const existUser = await userRepo.read({ email: user.email });
+    const existUser = await this.userRepository.read({ email: user.email });
     if (existUser) {
       throw new ErrorGenerator("User already exists", StatusCode.BadRequest);
     }
     const passwordHash = await hash(user.password, 8);
-    return userRepo.create({ ...user, password: passwordHash });
+    return this.userRepository.create({ ...user, password: passwordHash });
   }
 }

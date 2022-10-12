@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { DbUserRepository } from "../../repositories/user/DbUserRepository";
 import { DeleteUserService } from "../../services/app/user/DeleteUserService";
 import { StatusCode } from "../../types/statusCode";
 
@@ -8,7 +9,8 @@ export class DeleteUserController {
     if (userId !== request.params.id) {
       return response.responser(StatusCode.Unauthorized, "Unathorized");
     }
-    const deleteUserService = new DeleteUserService();
+    const userRepository = new DbUserRepository();
+    const deleteUserService = new DeleteUserService(userRepository);
     await deleteUserService.execute(request.params.id);
     return response.responser(StatusCode.Created, "User deleted");
   }
