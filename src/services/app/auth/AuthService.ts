@@ -13,13 +13,23 @@ export class AuthService {
     const userExisted = await userRepo.read({ email: user.email });
 
     if (!userExisted) {
-      throw new ErrorGenerator("User dos not exists!", StatusCode.Unauthorized);
+      throw new ErrorGenerator(
+        "Usuário ou senha inválidos!",
+        StatusCode.Unauthorized
+      );
+    }
+
+    if (userExisted.deletedAt) {
+      throw new ErrorGenerator(
+        "Usuário ou senha inválidos!",
+        StatusCode.Unauthorized
+      );
     }
 
     const passwordMatch = await compare(user.password, userExisted.password);
     if (!passwordMatch) {
       throw new ErrorGenerator(
-        "User or Password incorrect!",
+        "Usuário ou senha inválidos!",
         StatusCode.Unauthorized
       );
     }

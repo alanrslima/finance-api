@@ -1,8 +1,9 @@
 import Joi from "joi";
-// import joiMessages from "../../config/joi-messages.json";
 
 export const userSchema = Joi.object({
+  firstName: Joi.string(),
+  lastName: Joi.string(),
   email: Joi.string().email().required(),
   password: Joi.string().min(8).required(),
+  phone: Joi.string(),
 });
-//   .messages(joiMessages);

@@ -4,11 +4,13 @@ import { Router } from "express";
 import { ensuredAuthenticated } from "../../middleware/ensuredAuthenticated";
 import { GetUserController } from "../../controllers/user/GetUserController";
 import { EditUserController } from "../../controllers/user/EditUserController";
+import { DeleteUserController } from "../../controllers/user/DeleteUserController";
 
 const router = Router();
 const createUserController = new CreateUserController();
 const editUserController = new EditUserController();
 const getUserController = new GetUserController();
+const deleteUserController = new DeleteUserController();
 const createUserAccessControlListController =
   new CreateUserAccessControlListController();
 
@@ -23,5 +25,7 @@ router.post(
 router.get("/me", ensuredAuthenticated(), getUserController.handle);
 
 router.put("/:id", ensuredAuthenticated(), editUserController.handle);
+
+router.delete("/:id", ensuredAuthenticated(), deleteUserController.handle);
 
 export { router as usersRouter };

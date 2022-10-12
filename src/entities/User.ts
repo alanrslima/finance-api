@@ -1,4 +1,11 @@
-import { Column, Entity, JoinTable, ManyToMany, OneToMany } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+} from "typeorm";
 import { Account } from "./Account";
 import { BaseEntity } from "./BaseEntity";
 import { RefreshToken } from "./RefreshToken";
@@ -17,6 +24,15 @@ export class User extends BaseEntity {
 
   @Column({ nullable: true })
   lastName: string;
+
+  @Column({ nullable: true })
+  phone: string;
+
+  @Column({ nullable: true })
+  profile: string;
+
+  @CreateDateColumn({ nullable: true })
+  verifiedAt: Date;
 
   @ManyToMany(() => Role)
   @JoinTable({

@@ -5,7 +5,6 @@ describe("Create user service", () => {
   const newUser = new User();
   newUser.email = "test@email.com";
   newUser.password = "123456";
-  newUser.createdAt = new Date();
 
   it("Should create a new user", () => {
     const userService = new CreateUserService();

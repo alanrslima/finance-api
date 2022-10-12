@@ -24,6 +24,16 @@ export class CreateRoles1627508887000 implements MigrationInterface {
             type: "timestamp",
             default: "now()",
           },
+          {
+            name: "updatedAt",
+            type: "timestamp",
+            default: "now()",
+          },
+          {
+            name: "deletedAt",
+            type: "timestamp",
+            isNullable: true,
+          },
         ],
       })
     );

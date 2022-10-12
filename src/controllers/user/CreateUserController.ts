@@ -1,18 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import Joi from "joi";
 import { Validator } from "../../lib/Validator";
+import { userSchema } from "../../repositories/user/index.validations";
 import { CreateUserService } from "../../services/app/user/CreateUserService";
 import { StatusCode } from "../../types/statusCode";
-
-const schema = Joi.object({
-  firstName: Joi.string(),
-  lastName: Joi.string(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(8).required(),
-});
 export class CreateUserController {
   async handle(request: Request, response: Response, next: NextFunction) {
-    const validator = new Validator(schema);
+    const validator = new Validator(userSchema);
     await validator.validateAsyncFields(request.body);
 
     const createUserService = new CreateUserService();

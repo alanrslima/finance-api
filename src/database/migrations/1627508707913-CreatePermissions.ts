@@ -24,6 +24,16 @@ export class CreatePermissions1627508707913 implements MigrationInterface {
             type: "timestamp",
             default: "now()",
           },
+          {
+            name: "updatedAt",
+            type: "timestamp",
+            default: "now()",
+          },
+          {
+            name: "deletedAt",
+            type: "timestamp",
+            isNullable: true,
+          },
         ],
       })
     );
