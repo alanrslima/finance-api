@@ -6,6 +6,7 @@ import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
 import { RefreshTokenRepository } from "../../../repositories/refreshToken/RefreshTokenRepository";
 import { UserRepository } from "../../../repositories/user/UserRepository";
 import { StatusCode } from "../../../types/statusCode";
+import { GetUserService } from "../user/GetUserService";
 
 export class AuthService {
   constructor(
@@ -14,16 +15,10 @@ export class AuthService {
   ) {}
 
   async execute(user: User) {
-    const userExisted = await this.userRepository.read({ email: user.email });
+    const getUserService = new GetUserService(this.userRepository);
+    const userExisted = await getUserService.execute({ email: user.email });
 
     if (!userExisted) {
-      throw new ErrorGenerator(
-        "Usuário ou senha inválidos!",
-        StatusCode.Unauthorized
-      );
-    }
-
-    if (userExisted.deletedAt) {
       throw new ErrorGenerator(
         "Usuário ou senha inválidos!",
         StatusCode.Unauthorized

@@ -4,6 +4,7 @@ export class ErrorHandler {
   async handle(err: any, req: Request, res: Response, next: NextFunction) {
     // logger.error(err);
     // logger.error(err.stack);
+    console.error(err);
     switch (err.name) {
       case "ErrorGenerator":
         return res.responser(err.statusCode, err.message);

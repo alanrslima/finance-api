@@ -14,7 +14,7 @@ export interface BaseRepository<Entity> {
   read(
     id?: string | number | Date | ObjectID,
     options?: FindOneOptions<Entity>
-  );
+  ): Promise<Entity | undefined>;
   read(options?: FindOneOptions<Entity>): Promise<Entity | undefined>;
   read(
     conditions?: FindConditions<Entity>,
@@ -39,4 +39,6 @@ export interface BaseRepository<Entity> {
       | ObjectLiteral[],
     parameters?: ObjectLiteral
   ): Promise<void>;
+
+  validator(entity: DeepPartial<Entity>);
 }

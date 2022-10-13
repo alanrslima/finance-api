@@ -84,7 +84,7 @@ export class DbBaseRepository<Entity> implements BaseRepository<Entity> {
       .execute();
   }
 
-  private async validator(entity: DeepPartial<Entity>) {
+  async validator(entity: DeepPartial<Entity>) {
     const validator = new Validator(this.schema);
     await validator.validateAsyncFields(entity);
   }

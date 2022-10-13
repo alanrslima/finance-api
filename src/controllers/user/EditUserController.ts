@@ -6,10 +6,7 @@ import { EditUserService } from "../../services/app/user/EditUserService";
 import { StatusCode } from "../../types/statusCode";
 
 export class EditUserController {
-  async handle(request: Request, response: Response, next: NextFunction) {
-    // const validator = new Validator(userSchema);
-    // await validator.validateAsyncFields(request.body);
-
+  async handle(request: Request, response: Response) {
     const { userId } = request;
     if (userId !== request.params.id) {
       return response.responser(StatusCode.Unauthorized, "Unathorized");

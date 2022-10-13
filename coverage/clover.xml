@@ -1,389 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1660050007338" clover="3.2.0">
-  <project timestamp="1660050007339" name="All files">
-    <metrics statements="597" coveredstatements="399" conditionals="25" coveredconditionals="9" methods="93" coveredmethods="29" elements="715" coveredelements="437" complexity="0" loc="597" ncloc="597" packages="30" files="71" classes="71"/>
-    <package name="finance-api">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="ormconfig.js" path="/Users/mindpool/Code/finance/finance-api/ormconfig.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+<coverage generated="1665625152589" clover="3.2.0">
+  <project timestamp="1665625152589" name="All files">
+    <metrics statements="136" coveredstatements="128" conditionals="11" coveredconditionals="9" methods="36" coveredmethods="20" elements="183" coveredelements="157" complexity="0" loc="136" ncloc="136" packages="6" files="15" classes="15"/>
+    <package name="entities">
+      <metrics statements="52" coveredstatements="52" conditionals="1" coveredconditionals="1" methods="11" coveredmethods="1"/>
+      <file name="Account.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/Account.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
-    </package>
-    <package name="finance-api.src">
-      <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="app.ts" path="/Users/mindpool/Code/finance/finance-api/src/app.ts">
-        <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="BaseEntity.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/BaseEntity.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="5" type="stmt"/>
+      </file>
+      <file name="Permission.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/Permission.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="RefreshToken.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/RefreshToken.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="Role.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/Role.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="User.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/User.ts">
+        <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.controllers.account">
-      <metrics statements="19" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CreateUserAccountController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/account/CreateUserAccountController.ts">
-        <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-      </file>
-      <file name="GetUserAccountsController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/account/GetUserAccountsController.ts">
-        <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.controllers.auth">
-      <metrics statements="24" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="AuthController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/auth/AuthController.ts">
-        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-      </file>
-      <file name="CallbackController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/auth/CallbackController.ts">
-        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-      </file>
-      <file name="RefreshTokenController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/auth/RefreshTokenController.ts">
-        <metrics statements="10" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.controllers.permission">
-      <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="CreatePermissionController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/permission/CreatePermissionController.ts">
-        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.controllers.product">
-      <metrics statements="17" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CreateProductController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/product/CreateProductController.ts">
-        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-      </file>
-      <file name="GetAllProductsController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/product/GetAllProductsController.ts">
-        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.controllers.role">
-      <metrics statements="22" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CreateRoleController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/role/CreateRoleController.ts">
-        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-      </file>
-      <file name="CreateRolePermissionController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/role/CreateRolePermissionController.ts">
-        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.controllers.user">
-      <metrics statements="22" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-      <file name="CreateUserAccessControlListController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/user/CreateUserAccessControlListController.ts">
-        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-      </file>
-      <file name="CreateUserController.ts" path="/Users/mindpool/Code/finance/finance-api/src/controllers/user/CreateUserController.ts">
-        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="finance-api.src.database">
-      <metrics statements="10" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
-      <file name="index.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/index.ts">
-        <metrics statements="10" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.database.migrations">
-      <metrics statements="36" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="18" coveredmethods="0"/>
-      <file name="1627508510952-CreateUsers.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1627508510952-CreateUsers.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-      </file>
-      <file name="1627508707913-CreatePermissions.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1627508707913-CreatePermissions.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-      </file>
-      <file name="1627508887000-CreateRoles.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1627508887000-CreateRoles.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-      </file>
-      <file name="1627508996984-CreatePermissionsRoles.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1627508996984-CreatePermissionsRoles.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-      </file>
-      <file name="1627509179887-CreateUsersRoles.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1627509179887-CreateUsersRoles.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-      </file>
-      <file name="1627565156251-CreateUsersPermissions.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1627565156251-CreateUsersPermissions.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-      </file>
-      <file name="1627581188607-CreateProducts.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1627581188607-CreateProducts.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-      </file>
-      <file name="1657467839193-CreateRefreshTokens.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1657467839193-CreateRefreshTokens.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-      </file>
-      <file name="1657848100840-CreateAccount.ts" path="/Users/mindpool/Code/finance/finance-api/src/database/migrations/1657848100840-CreateAccount.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.entities">
-      <metrics statements="60" coveredstatements="60" conditionals="1" coveredconditionals="1" methods="12" coveredmethods="12"/>
-      <file name="Account.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/Account.ts">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
-      </file>
-      <file name="BaseEntity.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/BaseEntity.ts">
-        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="12" count="27" type="cond" truecount="1" falsecount="0"/>
-        <line num="13" count="27" type="stmt"/>
-      </file>
-      <file name="Permission.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/Permission.ts">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-      </file>
-      <file name="Product.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/Product.ts">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-      </file>
-      <file name="RefreshToken.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/RefreshToken.ts">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-      </file>
-      <file name="Role.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/Role.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-      </file>
-      <file name="User.ts" path="/Users/mindpool/Code/finance/finance-api/src/entities/User.ts">
-        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="16" count="4" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="24" count="4" type="stmt"/>
-        <line num="30" count="2" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="33" count="2" type="stmt"/>
-        <line num="35" count="4" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.lib">
-      <metrics statements="19" coveredstatements="18" conditionals="3" coveredconditionals="2" methods="4" coveredmethods="4"/>
+    <package name="lib">
+      <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
       <file name="ErrorGenerator.ts" path="/Users/mindpool/Code/finance/finance-api/src/lib/ErrorGenerator.ts">
         <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="3" count="2" type="stmt"/>
@@ -394,495 +87,101 @@
         <line num="16" count="2" type="stmt"/>
         <line num="17" count="2" type="stmt"/>
       </file>
-      <file name="ErrorHandler.ts" path="/Users/mindpool/Code/finance/finance-api/src/lib/ErrorHandler.ts">
-        <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="7" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-      </file>
       <file name="Validator.ts" path="/Users/mindpool/Code/finance/finance-api/src/lib/Validator.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="finance-api.src.middleware">
-      <metrics statements="49" coveredstatements="16" conditionals="10" coveredconditionals="3" methods="12" coveredmethods="4"/>
-      <file name="ensuredAuthenticated.ts" path="/Users/mindpool/Code/finance/finance-api/src/middleware/ensuredAuthenticated.ts">
-        <metrics statements="15" coveredstatements="5" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="7" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-      </file>
-      <file name="permissions.ts" path="/Users/mindpool/Code/finance/finance-api/src/middleware/permissions.ts">
-        <metrics statements="29" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="1"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="23" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="43" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="51" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-      </file>
-      <file name="routeResponser.ts" path="/Users/mindpool/Code/finance/finance-api/src/middleware/routeResponser.ts">
-        <metrics statements="5" coveredstatements="5" conditionals="5" coveredconditionals="3" methods="2" coveredmethods="2"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="23" count="3" type="cond" truecount="0" falsecount="1"/>
-        <line num="28" count="3" type="stmt"/>
-        <line num="35" count="3" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.provider">
-      <metrics statements="11" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="GenerateRefreshTokenProvider.ts" path="/Users/mindpool/Code/finance/finance-api/src/provider/GenerateRefreshTokenProvider.ts">
-        <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-      </file>
-      <file name="GenerateTokenProvider.ts" path="/Users/mindpool/Code/finance/finance-api/src/provider/GenerateTokenProvider.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.repositories.account">
-      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/account/index.ts">
-        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-      </file>
-      <file name="index.validations.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/account/index.validations.ts">
+    <package name="repositories.base">
+      <metrics statements="35" coveredstatements="27" conditionals="4" coveredconditionals="2" methods="16" coveredmethods="10"/>
+      <file name="BaseSchema.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/base/BaseSchema.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+      </file>
+      <file name="InMemoryBaseRepository.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/base/InMemoryBaseRepository.ts">
+        <metrics statements="33" coveredstatements="25" conditionals="4" coveredconditionals="2" methods="16" coveredmethods="10"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="43" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="44" count="6" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
+        <line num="46" count="4" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="78" count="3" type="stmt"/>
+        <line num="79" count="2" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
+        <line num="82" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="84" count="2" type="stmt"/>
+        <line num="85" count="2" type="stmt"/>
+        <line num="100" count="7" type="stmt"/>
+        <line num="101" count="7" type="stmt"/>
       </file>
     </package>
-    <package name="finance-api.src.repositories.base">
-      <metrics statements="14" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="3"/>
-      <file name="index.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/base/index.ts">
-        <metrics statements="14" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="3"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
-        <line num="40" count="2" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="60" count="2" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.repositories.permission">
-      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/permission/index.ts">
-        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-      </file>
-      <file name="index.validations.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/permission/index.validations.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.repositories.product">
-      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/product/index.ts">
-        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-      </file>
-      <file name="index.validations.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/product/index.validations.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.repositories.refreshToken">
-      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/refreshToken/index.ts">
-        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-      </file>
-      <file name="index.validations.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/refreshToken/index.validations.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.repositories.role">
-      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/role/index.ts">
-        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-      </file>
-      <file name="index.validations.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/role/index.validations.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.repositories.user">
+    <package name="repositories.user">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/user/index.ts">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="InMemoryUserRepository.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/user/InMemoryUserRepository.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+      </file>
+      <file name="UserSchema.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/user/UserSchema.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-      </file>
-      <file name="index.validations.ts" path="/Users/mindpool/Code/finance/finance-api/src/repositories/user/index.validations.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="finance-api.src.routes.v1">
-      <metrics statements="59" coveredstatements="59" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="accounts.ts" path="/Users/mindpool/Code/finance/finance-api/src/routes/v1/accounts.ts">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
+    <package name="services.app.user">
+      <metrics statements="14" coveredstatements="14" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="4"/>
+      <file name="EditUserService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/user/EditUserService.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-      </file>
-      <file name="auth.ts" path="/Users/mindpool/Code/finance/finance-api/src/routes/v1/auth.ts">
-        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="cond" truecount="1" falsecount="0"/>
         <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
       </file>
-      <file name="permissions.ts" path="/Users/mindpool/Code/finance/finance-api/src/routes/v1/permissions.ts">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-      </file>
-      <file name="products.ts" path="/Users/mindpool/Code/finance/finance-api/src/routes/v1/products.ts">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-      </file>
-      <file name="roles.ts" path="/Users/mindpool/Code/finance/finance-api/src/routes/v1/roles.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-      </file>
-      <file name="users.ts" path="/Users/mindpool/Code/finance/finance-api/src/routes/v1/users.ts">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.services.app.account">
-      <metrics statements="10" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CreateUserAccountService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/account/CreateUserAccountService.ts">
-        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-      </file>
-      <file name="GetUserAccountsService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/account/GetUserAccountsService.ts">
-        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.services.app.auth">
-      <metrics statements="42" coveredstatements="15" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="AuthService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/auth/AuthService.ts">
-        <metrics statements="22" coveredstatements="8" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-      </file>
-      <file name="RefreshTokenService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/auth/RefreshTokenService.ts">
-        <metrics statements="20" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="20" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="32" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.services.app.permission">
-      <metrics statements="9" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="CreatePermissionService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/permission/CreatePermissionService.ts">
-        <metrics statements="9" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.services.app.product">
-      <metrics statements="10" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CreateProductsService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/product/CreateProductsService.ts">
-        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-      </file>
-      <file name="GetAllProductsService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/product/GetAllProductsService.ts">
-        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.services.app.role">
-      <metrics statements="21" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CreateRolePermissionService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/role/CreateRolePermissionService.ts">
-        <metrics statements="12" coveredstatements="3" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-      </file>
-      <file name="CreateRoleService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/role/CreateRoleService.ts">
-        <metrics statements="9" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.services.app.user">
-      <metrics statements="27" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
-      <file name="CreateUserAccessControlListService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/user/CreateUserAccessControlListService.ts">
-        <metrics statements="16" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="21" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-      </file>
-      <file name="CreateUserService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/user/CreateUserService.ts">
-        <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
+      <file name="GetUserService.ts" path="/Users/mindpool/Code/finance/finance-api/src/services/app/user/GetUserService.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="9" count="6" type="cond" truecount="2" falsecount="0"/>
       </file>
     </package>
-    <package name="finance-api.src.strategys">
-      <metrics statements="16" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="github.ts" path="/Users/mindpool/Code/finance/finance-api/src/strategys/github.ts">
-        <metrics statements="16" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="finance-api.src.types">
+    <package name="types">
       <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="statusCode.ts" path="/Users/mindpool/Code/finance/finance-api/src/types/statusCode.ts">
         <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
