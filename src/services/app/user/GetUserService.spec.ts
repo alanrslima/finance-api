@@ -25,7 +25,7 @@ describe("Get user service", () => {
     expect(user).toBeUndefined();
   });
 
-  it("Should return undefined case user was deleted", async () => {
+  it("Should return user with deleteAt value case user was deleted", async () => {
     const userRepository = new InMemoryUserRepository();
     const getUserService = new GetUserService(userRepository);
 
@@ -42,6 +42,7 @@ describe("Get user service", () => {
 
     const user = await getUserService.execute({ id: newUser.id });
 
-    expect(user).toBeUndefined();
+    expect(user).toHaveProperty("deletedAt");
+    expect(user?.deletedAt).toBeInstanceOf(Date);
   });
 });

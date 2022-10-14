@@ -17,7 +17,7 @@ export class CreateRolePermissionService {
     roleId,
     permissions,
   }: RolePermissionRequest): Promise<Role | Error> {
-    const role = await this.roleRepository.read(roleId);
+    const role = await this.roleRepository.read({ where: { id: roleId } });
 
     if (!role) {
       return new Error("Role does not exists!");

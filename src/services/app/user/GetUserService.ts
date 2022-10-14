@@ -6,6 +6,6 @@ export class GetUserService {
 
   async execute(where: Partial<User>): Promise<User | undefined> {
     const user = await this.userRepository.read({ where });
-    return user?.deletedAt ? undefined : user;
+    return user;
   }
 }

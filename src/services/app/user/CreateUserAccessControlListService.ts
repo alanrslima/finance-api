@@ -14,7 +14,7 @@ export class CreateUserAccessControlListService {
   ) {}
 
   async execute({ userId, roles }: UserACLRequest): Promise<User | Error> {
-    const user = await this.userRepository.read(userId);
+    const user = await this.userRepository.read({ where: { id: userId } });
 
     if (!user) {
       throw new Error("User does not exists!");

@@ -15,7 +15,7 @@ export class CreatePermissionService {
     name,
     description,
   }: PermissionRequest): Promise<Permission | Error> {
-    if (await this.permissionRepository.read({ name })) {
+    if (await this.permissionRepository.read({ where: { name } })) {
       return new ErrorGenerator(
         "Permission already exists",
         StatusCode.BadRequest

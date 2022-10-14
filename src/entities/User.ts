@@ -13,7 +13,7 @@ import { Role } from "./Role";
 
 @Entity("users")
 export class User extends BaseEntity {
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column({ nullable: true })

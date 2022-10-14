@@ -30,7 +30,9 @@ describe("Delete user service", () => {
     const createdUser = await userRepository.create(user);
 
     await deleteUserService.execute(createdUser.id);
-    const userDeleted = await userRepository.read(createdUser.id);
+    const userDeleted = await userRepository.read({
+      where: { id: createdUser.id },
+    });
     expect(userDeleted).toHaveProperty("deletedAt");
     expect(userDeleted.deletedAt).toBeInstanceOf(Date);
   });

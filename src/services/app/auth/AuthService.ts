@@ -25,6 +25,10 @@ export class AuthService {
       );
     }
 
+    if (userExisted.deletedAt) {
+      throw new ErrorGenerator("Usuário desativado", StatusCode.Unauthorized);
+    }
+
     const passwordMatch = await compare(user.password, userExisted.password);
     if (!passwordMatch) {
       throw new ErrorGenerator(

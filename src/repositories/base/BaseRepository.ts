@@ -11,16 +11,16 @@ import {
 export interface BaseRepository<Entity> {
   create(entity: DeepPartial<Entity>): Promise<DeepPartial<Entity> & Entity>;
 
-  read(
-    id?: string | number | Date | ObjectID,
-    options?: FindOneOptions<Entity>
-  ): Promise<Entity | undefined>;
+  // read(
+  //   id?: string | number | Date | ObjectID,
+  //   options?: FindOneOptions<Entity>
+  // ): Promise<Entity | undefined>;
   read(options?: FindOneOptions<Entity>): Promise<Entity | undefined>;
-  read(
-    conditions?: FindConditions<Entity>,
-    options?: FindOneOptions<Entity>
-  ): Promise<Entity | undefined>;
-  read(id?, options?): Promise<Entity | undefined>;
+  // read(
+  //   conditions?: FindConditions<Entity>,
+  //   options?: FindOneOptions<Entity>
+  // ): Promise<Entity | undefined>;
+  // read(id?, options?): Promise<Entity | undefined>;
 
   list(
     options?: FindManyOptions<Entity> | FindConditions<Entity>

@@ -40,15 +40,7 @@ export class DbBaseRepository<Entity> implements BaseRepository<Entity> {
     return result;
   }
 
-  async read(
-    id?: string | number | Date | ObjectID,
-    options?: FindOneOptions<Entity>
-  );
   async read(options?: FindOneOptions<Entity>): Promise<Entity | undefined>;
-  async read(
-    conditions?: FindConditions<Entity>,
-    options?: FindOneOptions<Entity>
-  ): Promise<Entity | undefined>;
 
   async read(id?, options?): Promise<Entity | undefined> {
     return this.repository.findOne(id, options);

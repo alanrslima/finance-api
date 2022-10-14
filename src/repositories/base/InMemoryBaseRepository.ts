@@ -3,8 +3,8 @@ import {
   DeepPartial,
   FindConditions,
   FindManyOptions,
-  ObjectLiteral,
   FindOneOptions,
+  ObjectLiteral,
 } from "typeorm";
 import { BaseEntity } from "../../entities/BaseEntity";
 import { BaseRepository } from "./BaseRepository";
@@ -38,6 +38,7 @@ export class InMemoryBaseRepository<Entity> implements BaseRepository<Entity> {
     });
   }
 
+  async read(options?: FindOneOptions<Entity>): Promise<Entity | undefined>;
   async read(conditions?, options?): Promise<Entity | undefined> {
     return new Promise((resolve, reject) => {
       if (typeof conditions === "object") {
