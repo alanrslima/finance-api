@@ -8,6 +8,10 @@ export class DbUserRepository
   implements UserRepository
 {
   constructor() {
-    super({ entity: User, filterable: ["email"], schema: userSchema });
+    super({ entity: User, schema: userSchema });
+  }
+
+  async readByEmail(email: string): Promise<User | undefined> {
+    return await this.repository.findOne({ where: { email } });
   }
 }

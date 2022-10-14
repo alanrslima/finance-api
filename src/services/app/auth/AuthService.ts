@@ -42,10 +42,7 @@ export class AuthService {
       userId: userExisted.id,
     });
 
-    await this.refreshTokenRepository.delete("userId = :id", {
-      id: userExisted.id,
-    });
-
+    await this.refreshTokenRepository.removeByUserId(userExisted.id);
     const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
       this.refreshTokenRepository
     );

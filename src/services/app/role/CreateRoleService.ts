@@ -11,9 +11,9 @@ export class CreateRoleService {
   constructor(private roleRepository: RoleRepository) {}
 
   async execute({ name, description }: RoleRequest) {
-    if (await this.roleRepository.read({ where: { name } })) {
-      return new ErrorGenerator("Role already exists", StatusCode.BadRequest);
-    }
+    // if (await this.roleRepository.read({ where: { name } })) {
+    //   return new ErrorGenerator("Role already exists", StatusCode.BadRequest);
+    // }
     const role = await this.roleRepository.create({ name, description });
     return role;
   }

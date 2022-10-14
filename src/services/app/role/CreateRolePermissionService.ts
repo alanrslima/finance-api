@@ -17,17 +17,17 @@ export class CreateRolePermissionService {
     roleId,
     permissions,
   }: RolePermissionRequest): Promise<Role | Error> {
-    const role = await this.roleRepository.read({ where: { id: roleId } });
+    const role = await this.roleRepository.read(roleId);
 
     if (!role) {
       return new Error("Role does not exists!");
     }
 
-    const permissionsExists = await this.permissionRepository.listByIds(
-      permissions
-    );
+    // const permissionsExists = await this.permissionRepository.listByIds(
+    //   permissions
+    // );
 
-    role.permissions = permissionsExists;
+    // role.permissions = permissionsExists;
 
     await this.roleRepository.create(role);
     return role;

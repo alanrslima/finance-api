@@ -1,11 +1,4 @@
-import {
-  Brackets,
-  DeepPartial,
-  FindConditions,
-  FindManyOptions,
-  FindOneOptions,
-  ObjectLiteral,
-} from "typeorm";
+import { DeepPartial, DeleteResult } from "typeorm";
 import { BaseEntity } from "../../entities/BaseEntity";
 import { BaseRepository } from "./BaseRepository";
 import { v4 as uuid } from "uuid";
@@ -13,92 +6,75 @@ import { Validator } from "../../lib/Validator";
 import Joi from "joi";
 
 export class InMemoryBaseRepository<Entity> implements BaseRepository<Entity> {
-  private items: Entity & BaseEntity[];
+  public items: Array<Entity & BaseEntity>;
   private schema: Joi.ObjectSchema<any>;
 
   constructor({ schema }: { schema: any }) {
-    this.items = [] as Entity & BaseEntity[];
+    this.items = [];
     this.schema = schema;
   }
 
+  async validator(entity: DeepPartial<Entity>) {
+    const validator = new Validator(this.schema);
+    await validator.validateAsyncFields(entity);
+  }
+
   async create(
-    entity: DeepPartial<Entity>
-  ): Promise<DeepPartial<Entity> & Entity> {
+    entity: DeepPartial<Entity & BaseEntity>
+  ): Promise<Entity & BaseEntity> {
     await this.validator(entity);
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const newItem = {
         ...entity,
         id: uuid(),
         createdAt: new Date(),
         deletedAt: null,
         updatedAt: new Date(),
-      };
+      } as Entity & BaseEntity;
       this.items.push(newItem);
-      resolve(newItem as DeepPartial<Entity> & Entity);
+      resolve(newItem);
     });
   }
 
-  async read(options?: FindOneOptions<Entity>): Promise<Entity | undefined>;
-  async read(conditions?, options?): Promise<Entity | undefined> {
-    return new Promise((resolve, reject) => {
-      if (typeof conditions === "object") {
-        const item = this.items.find((item) => {
-          const [key] = Object.keys(conditions.where);
-          return item[key] === conditions.where[key];
-        });
-        resolve(item as Entity);
+  async read(id: string | number): Promise<Entity> {
+    return new Promise((resolve) => {
+      resolve(this.items.find((item) => item.id === id));
+    });
+  }
+
+  async update(entity: DeepPartial<Entity & BaseEntity>): Promise<Entity> {
+    return new Promise(async (resolve, reject) => {
+      const item = await this.read(entity.id);
+      if (item) {
+        const newItems = this.items.map((item) =>
+          item.id === entity.id ? { ...entity, item } : item
+        ) as Array<Entity & BaseEntity>;
+        this.items = newItems;
+        resolve(this.items.find((item) => item.id === entity.id));
+      }
+      reject();
+    });
+  }
+
+  async delete(id: string | number): Promise<boolean> {
+    return new Promise(async (resolve) => {
+      const item = this.items.find((item) => item.id === id) as DeepPartial<
+        Entity & BaseEntity
+      >;
+      if (item) {
+        await this.update({ ...item, deletedAt: new Date() });
+        resolve(true);
       } else {
-        const item = this.items.find((item) => item.id === conditions);
-        resolve(item as Entity);
+        resolve(false);
       }
     });
   }
 
-  async list(
-    options?: FindManyOptions<Entity> | FindConditions<Entity>
-  ): Promise<Entity[]> {
-    return new Promise((resolve, reject) => {
-      const t = [];
-      resolve([t] as Entity[]);
+  async remove(id: string | number): Promise<DeleteResult> {
+    return new Promise((resolve) => {
+      this.items = this.items.filter((item) => item.id !== id);
+      const result: DeleteResult = { raw: "", affected: 1 };
+      resolve(result);
     });
-  }
-
-  async listByIds(
-    ids: any[],
-    options?: FindManyOptions<Entity>
-  ): Promise<Entity[]> {
-    return new Promise((resolve, reject) => {
-      const t = [];
-      resolve([t] as Entity[]);
-    });
-  }
-
-  async update(
-    entity: DeepPartial<Entity>
-  ): Promise<DeepPartial<Entity> & Entity> {
-    await this.validator(entity);
-    return new Promise((resolve, reject) => {
-      const params = entity as Entity & BaseEntity;
-      const newItems = this.items.map((item) =>
-        item.id === params.id ? { ...item, ...params } : item
-      ) as Entity & BaseEntity[];
-      this.items = newItems;
-      resolve(entity as DeepPartial<Entity> & Entity);
-    });
-  }
-
-  async delete(
-    where:
-      | Brackets
-      | string
-      | ((qb: this) => string)
-      | ObjectLiteral
-      | ObjectLiteral[],
-    parameters?: ObjectLiteral
-  ) {}
-
-  async validator(entity: DeepPartial<Entity>) {
-    const validator = new Validator(this.schema);
-    await validator.validateAsyncFields(entity);
   }
 }

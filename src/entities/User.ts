@@ -42,9 +42,11 @@ export class User extends BaseEntity {
   })
   roles: Role[];
 
-  @OneToMany(() => RefreshToken, (refreshToken) => refreshToken.user)
+  @OneToMany(() => RefreshToken, (refreshToken) => refreshToken.user, {
+    cascade: true,
+  })
   refreshTokens: RefreshToken[];
 
-  @OneToMany(() => Account, (account) => account.user)
+  @OneToMany(() => Account, (account) => account.user, { cascade: true })
   accounts: Account[];
 }

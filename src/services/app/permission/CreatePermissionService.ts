@@ -15,12 +15,12 @@ export class CreatePermissionService {
     name,
     description,
   }: PermissionRequest): Promise<Permission | Error> {
-    if (await this.permissionRepository.read({ where: { name } })) {
-      return new ErrorGenerator(
-        "Permission already exists",
-        StatusCode.BadRequest
-      );
-    }
+    // if (await this.permissionRepository.read({ where: { name } })) {
+    //   return new ErrorGenerator(
+    //     "Permission already exists",
+    //     StatusCode.BadRequest
+    //   );
+    // }
 
     const permission = await this.permissionRepository.create({
       name,

@@ -14,15 +14,15 @@ export class CreateUserAccessControlListService {
   ) {}
 
   async execute({ userId, roles }: UserACLRequest): Promise<User | Error> {
-    const user = await this.userRepository.read({ where: { id: userId } });
+    const user = await this.userRepository.read(userId);
 
     if (!user) {
       throw new Error("User does not exists!");
     }
 
-    const rolesExists = await this.roleRepository.listByIds(roles);
+    // const rolesExists = await this.roleRepository.listByIds(roles);
 
-    user.roles = rolesExists;
+    // user.roles = rolesExists;
     this.userRepository.create(user);
     return user;
   }

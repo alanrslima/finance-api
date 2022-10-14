@@ -8,6 +8,6 @@ export class DbPermissionRepository
   implements PermissionRepository
 {
   constructor() {
-    super({ entity: Permission, filterable: ["id"], schema: permissionSchema });
+    super({ entity: Permission, schema: permissionSchema });
   }
 }

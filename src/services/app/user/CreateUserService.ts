@@ -8,9 +8,7 @@ export class CreateUserService {
   constructor(private userRepository: UserRepository) {}
 
   async execute(user: User): Promise<User> {
-    const existUser = await this.userRepository.read({
-      where: { email: user.email },
-    });
+    const existUser = await this.userRepository.readByEmail(user.email);
     if (existUser) {
       throw new ErrorGenerator("User already exists", StatusCode.BadRequest);
     }

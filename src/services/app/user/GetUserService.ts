@@ -4,8 +4,13 @@ import { UserRepository } from "../../../repositories/user/UserRepository";
 export class GetUserService {
   constructor(private userRepository: UserRepository) {}
 
-  async execute(where: Partial<User>): Promise<User | undefined> {
-    const user = await this.userRepository.read({ where });
-    return user;
+  async execute(params: {
+    id?: string;
+    email?: string;
+  }): Promise<User | undefined> {
+    if (params.id) {
+      return await this.userRepository.read(params.id);
+    }
+    return await this.userRepository.readByEmail(params.email);
   }
 }

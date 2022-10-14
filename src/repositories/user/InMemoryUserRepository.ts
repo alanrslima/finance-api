@@ -10,4 +10,11 @@ export class InMemoryUserRepository
   constructor() {
     super({ schema: userSchema });
   }
+
+  async readByEmail(email: string): Promise<User | undefined> {
+    return new Promise((resolve, reject) => {
+      const user = this.items.find((item) => item.email === email);
+      resolve(user);
+    });
+  }
 }

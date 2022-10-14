@@ -8,6 +8,6 @@ export class DbAccountRepository
   implements AccountRepository
 {
   constructor() {
-    super({ entity: Account, filterable: ["id"], schema: accountSchema });
+    super({ entity: Account, schema: accountSchema });
   }
 }

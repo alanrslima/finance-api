@@ -10,8 +10,22 @@ export class DbRefreshTokenRepository
   constructor() {
     super({
       entity: RefreshToken,
-      filterable: ["id"],
       schema: refreshTokenSchema,
+    });
+  }
+  async removeByUserId(userId: string | number) {
+    return await this.repository
+      .createQueryBuilder()
+      .delete()
+      .from(RefreshToken)
+      .where("userId = :userId", { userId })
+      .execute();
+  }
+
+  async readWithUser(refreshTokenId: string): Promise<RefreshToken> {
+    return await this.repository.findOne({
+      where: { id: refreshTokenId },
+      relations: ["user"],
     });
   }
 }

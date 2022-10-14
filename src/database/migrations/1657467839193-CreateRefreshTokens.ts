@@ -24,6 +24,7 @@ export class CreateRefreshTokens1657467839193 implements MigrationInterface {
             name: "updatedAt",
             type: "timestamp",
             default: "now()",
+            onUpdate: "now()",
           },
           {
             name: "deletedAt",

@@ -38,6 +38,7 @@ export class CreateAccount1657848100840 implements MigrationInterface {
             name: "updatedAt",
             type: "timestamp",
             default: "now()",
+            onUpdate: "now()",
           },
           {
             name: "deletedAt",

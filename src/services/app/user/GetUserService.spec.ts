@@ -21,7 +21,8 @@ describe("Get user service", () => {
     const userRepository = new InMemoryUserRepository();
     const getUserService = new GetUserService(userRepository);
 
-    const user = await getUserService.execute({ id: "12345678" });
+    const id = "12345678";
+    const user = await getUserService.execute({ id });
     expect(user).toBeUndefined();
   });
 
@@ -35,11 +36,7 @@ describe("Get user service", () => {
       password: "12345678",
     });
 
-    await userRepository.update({
-      ...newUser,
-      deletedAt: new Date(),
-    });
-
+    await userRepository.delete(newUser.id);
     const user = await getUserService.execute({ id: newUser.id });
 
     expect(user).toHaveProperty("deletedAt");

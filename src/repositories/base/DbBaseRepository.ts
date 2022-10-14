@@ -1,83 +1,68 @@
 import joi from "joi";
-import {
-  getRepository,
-  Repository,
-  EntityTarget,
-  FindOneOptions,
-  Brackets,
-  ObjectLiteral,
-  DeepPartial,
-  FindConditions,
-  ObjectID,
-  FindManyOptions,
-} from "typeorm";
+import { getRepository, Repository, EntityTarget, DeepPartial } from "typeorm";
+import { BaseEntity } from "../../entities/BaseEntity";
 import { Validator } from "../../lib/Validator";
 import { BaseRepository } from "./BaseRepository";
 
 export class DbBaseRepository<Entity> implements BaseRepository<Entity> {
-  private repository: Repository<Entity>;
-  private entity: EntityTarget<Entity>;
-  private filterable: string[];
+  public repository: Repository<Entity & BaseEntity>;
   private schema: joi.ObjectSchema<any>;
+  private entity: EntityTarget<Entity>;
 
   constructor({
     entity,
-    filterable,
     schema,
   }: {
-    entity: EntityTarget<Entity>;
-    filterable: string[];
+    entity: EntityTarget<Entity & BaseEntity>;
     schema: any;
   }) {
     this.repository = getRepository(entity);
-    (this.entity = entity), (this.schema = schema);
+    this.schema = schema;
+    this.entity = entity;
   }
 
-  async create(entity: DeepPartial<Entity>) {
+  async validator(entity: DeepPartial<Entity & BaseEntity>) {
+    const validator = new Validator(this.schema);
+    await validator.validateAsyncFields(entity);
+  }
+
+  async create(
+    entity: DeepPartial<Entity & BaseEntity>
+  ): Promise<Entity & BaseEntity> {
     await this.validator(entity);
     const obj = this.repository.create(entity);
-    const result = await this.repository.save(obj as DeepPartial<Entity>);
+    const result = await this.repository.save(
+      obj as DeepPartial<Entity & BaseEntity>
+    );
     return result;
   }
 
-  async read(options?: FindOneOptions<Entity>): Promise<Entity | undefined>;
-
-  async read(id?, options?): Promise<Entity | undefined> {
-    return this.repository.findOne(id, options);
+  async read(id: string | number): Promise<(Entity & BaseEntity) | undefined> {
+    return this.repository.findOne(id);
   }
 
-  async list(options?: FindManyOptions<Entity> | FindConditions<Entity>) {
-    return this.repository.find(options);
-  }
-
-  async listByIds(ids: any[], options?: FindManyOptions<Entity>) {
-    return this.repository.findByIds(ids, options);
-  }
-
-  async update(entity: DeepPartial<Entity>) {
+  async update(
+    entity: DeepPartial<Entity & BaseEntity>
+  ): Promise<Entity & BaseEntity> {
     await this.validator(entity);
     return this.repository.save(entity);
   }
 
-  async delete(
-    where:
-      | Brackets
-      | string
-      | ((qb: this) => string)
-      | ObjectLiteral
-      | ObjectLiteral[],
-    parameters?: ObjectLiteral
-  ) {
-    await this.repository
+  async delete(id: string | number): Promise<boolean> {
+    const entity = (await this.read(id)) as DeepPartial<Entity & BaseEntity>;
+    if (entity) {
+      await this.update({ ...entity, deletedAt: new Date() });
+      return true;
+    }
+    return false;
+  }
+
+  async remove(id: string | number) {
+    return await this.repository
       .createQueryBuilder()
       .delete()
       .from(this.entity)
-      .where(where, parameters)
+      .where("id = :id", { id })
       .execute();
-  }
-
-  async validator(entity: DeepPartial<Entity>) {
-    const validator = new Validator(this.schema);
-    await validator.validateAsyncFields(entity);
   }
 }

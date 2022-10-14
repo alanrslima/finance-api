@@ -13,10 +13,9 @@ class RefreshTokenService {
   constructor(private refreshTokenRepository: RefreshTokenRepository) {}
 
   async execute({ refresh_token }: RefreshTokenRequest) {
-    const refreshToken = await this.refreshTokenRepository.read({
-      where: { id: refresh_token },
-      relations: ["user"],
-    });
+    const refreshToken = await this.refreshTokenRepository.readWithUser(
+      refresh_token
+    );
     if (!refreshToken) {
       throw new ErrorGenerator("Refresh token invalid", StatusCode.NotFound);
     }
@@ -30,10 +29,6 @@ class RefreshTokenService {
       dayjs.unix(refreshToken.expiresIn)
     );
     if (refreshTokenExpired) {
-      await this.refreshTokenRepository.delete("userId = :id", {
-        id: refreshToken.user.id,
-      });
-
       const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
         this.refreshTokenRepository
       );

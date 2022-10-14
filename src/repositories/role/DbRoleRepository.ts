@@ -10,7 +10,6 @@ export class DbRoleRepository
   constructor() {
     super({
       entity: Role,
-      filterable: ["id"],
       schema: roleSchema,
     });
   }

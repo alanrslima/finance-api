@@ -56,6 +56,7 @@ export class CreateUsers1627508510952 implements MigrationInterface {
             name: "updatedAt",
             type: "timestamp",
             default: "now()",
+            onUpdate: "now()",
           },
           {
             name: "deletedAt",

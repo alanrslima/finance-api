@@ -1,44 +1,25 @@
-import {
-  Brackets,
-  DeepPartial,
-  FindConditions,
-  FindManyOptions,
-  FindOneOptions,
-  ObjectID,
-  ObjectLiteral,
-} from "typeorm";
+import { DeepPartial, DeleteResult } from "typeorm";
 
 export interface BaseRepository<Entity> {
-  create(entity: DeepPartial<Entity>): Promise<DeepPartial<Entity> & Entity>;
+  create(entity: DeepPartial<Entity>): Promise<Entity>;
 
-  // read(
-  //   id?: string | number | Date | ObjectID,
-  //   options?: FindOneOptions<Entity>
-  // ): Promise<Entity | undefined>;
-  read(options?: FindOneOptions<Entity>): Promise<Entity | undefined>;
-  // read(
-  //   conditions?: FindConditions<Entity>,
-  //   options?: FindOneOptions<Entity>
-  // ): Promise<Entity | undefined>;
-  // read(id?, options?): Promise<Entity | undefined>;
+  /**
+   * Get an entity by ID
+   * @param id
+   */
+  read(id: string | number): Promise<Entity>;
 
-  list(
-    options?: FindManyOptions<Entity> | FindConditions<Entity>
-  ): Promise<Entity[]>;
+  update(entity: DeepPartial<Entity>): Promise<Entity>;
 
-  listByIds(ids: any[], options?: FindManyOptions<Entity>): Promise<Entity[]>;
+  /**
+   * Make a logic deletion on database
+   * @param id
+   */
+  delete(id: string | number): Promise<boolean>;
 
-  update(entity: DeepPartial<Entity>): Promise<DeepPartial<Entity> & Entity>;
-
-  delete(
-    where:
-      | Brackets
-      | string
-      | ((qb: this) => string)
-      | ObjectLiteral
-      | ObjectLiteral[],
-    parameters?: ObjectLiteral
-  ): Promise<void>;
-
-  validator(entity: DeepPartial<Entity>);
+  /**
+   * Make a physical deletion on database
+   * @param id
+   */
+  remove(id: string | number): Promise<DeleteResult>;
 }
