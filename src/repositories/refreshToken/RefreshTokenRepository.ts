@@ -6,4 +6,6 @@ export interface RefreshTokenRepository extends BaseRepository<RefreshToken> {
   removeByUserId(userId: string): Promise<DeleteResult>;
 
   readWithUser(refreshTokenId: string): Promise<RefreshToken>;
+
+  listByUserId(userId: string): Promise<RefreshToken[]>;
 }

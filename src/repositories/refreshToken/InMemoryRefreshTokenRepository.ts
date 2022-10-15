@@ -25,4 +25,10 @@ export class InMemoryRefreshTokenRepository
       resolve(this.items.find((item) => item.id === refreshTokenId));
     });
   }
+
+  async listByUserId(userId: string): Promise<RefreshToken[]> {
+    return new Promise((resolve) => {
+      resolve(this.items.filter((item) => item?.user?.id === userId));
+    });
+  }
 }

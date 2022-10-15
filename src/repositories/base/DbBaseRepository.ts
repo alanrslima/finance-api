@@ -1,5 +1,12 @@
 import joi from "joi";
-import { getRepository, Repository, EntityTarget, DeepPartial } from "typeorm";
+import {
+  getRepository,
+  Repository,
+  EntityTarget,
+  DeepPartial,
+  FindManyOptions,
+  FindConditions,
+} from "typeorm";
 import { BaseEntity } from "../../entities/BaseEntity";
 import { Validator } from "../../lib/Validator";
 import { BaseRepository } from "./BaseRepository";

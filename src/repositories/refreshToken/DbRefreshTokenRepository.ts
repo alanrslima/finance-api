@@ -28,4 +28,8 @@ export class DbRefreshTokenRepository
       relations: ["user"],
     });
   }
+
+  async listByUserId(userId: string | number) {
+    return await this.repository.find({ where: { user: { id: userId } } });
+  }
 }
