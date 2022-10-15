@@ -17,6 +17,21 @@ describe("Get user service", () => {
     expect(user).toEqual(expect.objectContaining(newUser));
   });
 
+  it("Should return an user by email case exists", async () => {
+    const userRepository = new InMemoryUserRepository();
+    const getUserService = new GetUserService(userRepository);
+
+    const newUser = await userRepository.create({
+      lastName: "Jose",
+      email: "jose@gmail.com",
+      password: "12345678",
+    });
+
+    const user = await getUserService.execute({ email: newUser.email });
+    expect(user).not.toBeUndefined();
+    expect(user).toEqual(expect.objectContaining(newUser));
+  });
+
   it("Should return undefined case dont exist the user", async () => {
     const userRepository = new InMemoryUserRepository();
     const getUserService = new GetUserService(userRepository);

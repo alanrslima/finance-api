@@ -4,7 +4,7 @@ import { RefreshToken } from "../../entities/RefreshToken";
 import { refreshTokenSchema } from "./RefreshTokenSchema";
 import { DeleteResult } from "typeorm";
 
-export class InMemoryAccountRepository
+export class InMemoryRefreshTokenRepository
   extends InMemoryBaseRepository<RefreshToken>
   implements RefreshTokenRepository
 {

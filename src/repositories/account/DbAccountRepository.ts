@@ -10,4 +10,8 @@ export class DbAccountRepository
   constructor() {
     super({ entity: Account, schema: accountSchema });
   }
+
+  async listByUserId(userId: string): Promise<Account[]> {
+    return this.repository.find({ where: { user: { id: userId } } });
+  }
 }

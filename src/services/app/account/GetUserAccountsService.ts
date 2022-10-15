@@ -5,10 +5,7 @@ export class GetUserAccountsService {
   constructor(private accountRepository: AccountRepository) {}
 
   async execute({ userId }: { userId: string }): Promise<Account[]> {
-    // const accounts = await this.accountRepository.list({
-    //   where: { user: { id: userId } },
-    // });
-    // return accounts;
-    return [];
+    const accounts = await this.accountRepository.listByUserId(userId);
+    return accounts;
   }
 }

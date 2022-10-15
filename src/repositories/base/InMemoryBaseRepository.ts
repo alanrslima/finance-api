@@ -43,6 +43,7 @@ export class InMemoryBaseRepository<Entity> implements BaseRepository<Entity> {
   }
 
   async update(entity: DeepPartial<Entity & BaseEntity>): Promise<Entity> {
+    await this.validator(entity);
     return new Promise(async (resolve, reject) => {
       const item = await this.read(entity.id);
       if (item) {

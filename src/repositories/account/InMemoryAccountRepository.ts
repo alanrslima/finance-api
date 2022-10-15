@@ -5,10 +5,16 @@ import { accountSchema } from "./AccountSchema";
 
 export class InMemoryAccountRepository
   extends InMemoryBaseRepository<Account>
-  implements AccountRepository {}
-
-export class InMemoryPermissionRepository extends InMemoryBaseRepository<Account> {
+  implements AccountRepository
+{
   constructor() {
     super({ schema: accountSchema });
+  }
+
+  async listByUserId(userId: string): Promise<Account[]> {
+    return new Promise((resolve) => {
+      const accounts = this.items.filter((item) => item.user?.id === userId);
+      resolve(accounts);
+    });
   }
 }
