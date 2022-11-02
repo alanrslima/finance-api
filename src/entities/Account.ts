@@ -1,5 +1,6 @@
-import { Entity, Column, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne, OneToMany } from "typeorm";
 import { BaseEntity } from "./BaseEntity";
+import { Transaction } from "./Transaction";
 import { User } from "./User";
 
 @Entity("accounts")
@@ -18,4 +19,9 @@ export class Account extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.accounts)
   user: User;
+
+  @OneToMany(() => Transaction, (transaction) => transaction.account, {
+    cascade: true,
+  })
+  transactions: Transaction[];
 }

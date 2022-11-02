@@ -1,4 +1,4 @@
-import { Entity, Column, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
 import { BaseEntity } from "./BaseEntity";
 import { User } from "./User";
 
@@ -8,5 +8,6 @@ export class RefreshToken extends BaseEntity {
   expiresIn: number;
 
   @ManyToOne(() => User, (user) => user.refreshTokens)
+  @JoinColumn()
   user: User;
 }

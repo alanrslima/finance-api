@@ -19,6 +19,7 @@ class GenerateRefreshTokenProvider {
       expiresIn,
       user,
     });
+    delete result.user;
     return result;
   }
 }

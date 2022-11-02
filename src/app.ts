@@ -10,6 +10,7 @@ import { permissionsRouter } from "./routes/v1/permissions";
 import { usersRouter } from "./routes/v1/users";
 import { authRouter } from "./routes/v1/auth";
 import session from "express-session";
+import cors from "cors";
 import passport from "passport";
 
 import { database } from "./database";
@@ -19,6 +20,7 @@ import { ErrorHandler } from "./lib/ErrorHandler";
 database.create();
 
 const app = express();
+
 const errorHandler = new ErrorHandler();
 
 // Configure session;
@@ -37,7 +39,7 @@ app.use(passport.session());
 
 // Use custom middlewares to responses in routes;
 app.use(routeResponser);
-
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 /**

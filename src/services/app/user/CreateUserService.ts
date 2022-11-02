@@ -13,6 +13,11 @@ export class CreateUserService {
       throw new ErrorGenerator("User already exists", StatusCode.BadRequest);
     }
     const passwordHash = await hash(user.password, 8);
-    return this.userRepository.create({ ...user, password: passwordHash });
+    const createdUser = await this.userRepository.create({
+      ...user,
+      password: passwordHash,
+    });
+    delete createdUser.password;
+    return createdUser;
   }
 }

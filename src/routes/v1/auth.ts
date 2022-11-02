@@ -21,4 +21,12 @@ router.get(
   callbackController.handle
 );
 
+// facebook OAUTH
+router.get("/github/login", passportGithub.authenticate("oauth2"));
+router.get(
+  "/github/callback",
+  passportGithub.authenticate("oauth2", { failureRedirect: "/login" }),
+  callbackController.handle
+);
+
 export { router as authRouter };
