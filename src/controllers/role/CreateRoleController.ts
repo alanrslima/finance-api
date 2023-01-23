@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express'
+import { StatusCodes } from 'http-status-codes'
 // import Joi from "joi";
 // import { Validator } from "../../lib/Validator";
-import { DbRoleRepository } from "../../repositories/role/DbRoleRepository";
-import { CreateRoleService } from "../../services/app/role/CreateRoleService";
-import { StatusCode } from "../../types/statusCode";
+import { DbRoleRepository } from '../../repositories/role/DbRoleRepository'
+import { CreateRoleService } from '../../services/app/role/CreateRoleService'
 
 // const schema = Joi.object({
 //   name: Joi.string().required(),
@@ -11,13 +11,13 @@ import { StatusCode } from "../../types/statusCode";
 // });
 
 export class CreateRoleController {
-  async handle(request: Request, response: Response) {
+  async handle(request: Request, response: Response): Promise<void> {
     // const validator = new Validator(schema);
     // await validator.validateAsyncFields(request.body);
 
-    const roleRepository = new DbRoleRepository();
-    const createRoleService = new CreateRoleService(roleRepository);
-    const result = await createRoleService.execute(request.body);
-    return response.responser(StatusCode.Created, "Role created", result);
+    const roleRepository = new DbRoleRepository()
+    const createRoleService = new CreateRoleService(roleRepository)
+    const result = await createRoleService.execute(request.body)
+    response.responser(StatusCodes.CREATED, 'Role created', result)
   }
 }

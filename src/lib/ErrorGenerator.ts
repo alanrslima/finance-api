@@ -1,19 +1,19 @@
-import { StatusCode } from "../types/statusCode";
+import { StatusCodes } from 'http-status-codes'
 
 export class ErrorGenerator extends Error {
-  private statusCode;
+  private readonly statusCode
 
   constructor(
     message: string,
-    statusCode: StatusCode,
-    name = "ErrorGenerator"
+    statusCode: StatusCodes,
+    name = 'ErrorGenerator'
   ) {
-    super();
+    super()
 
-    Object.setPrototypeOf(this, new.target.prototype);
-    this.name = name;
-    this.message = message;
-    this.statusCode = statusCode;
-    Error.captureStackTrace(this);
+    Object.setPrototypeOf(this, new.target.prototype)
+    this.name = name
+    this.message = message
+    this.statusCode = statusCode
+    Error.captureStackTrace(this)
   }
 }

@@ -1,20 +1,20 @@
-import Joi from "joi";
-import { StatusCode } from "../types/statusCode";
-import { ErrorGenerator } from "./ErrorGenerator";
+import { StatusCodes } from 'http-status-codes'
+import Joi from 'joi'
+import { ErrorGenerator } from './ErrorGenerator'
 
 export class Validator {
-  private schema: Joi.ObjectSchema<any>;
+  private readonly schema: Joi.ObjectSchema<any>
 
   constructor(schema: Joi.ObjectSchema<any>) {
-    this.schema = schema;
+    this.schema = schema
   }
 
-  async validateAsyncFields(entity: any) {
+  async validateAsyncFields(entity: any): Promise<void> {
     try {
       // await this.schema.validateAsync(entity, { abortEarly: false });
-      await this.schema.validateAsync(entity);
-    } catch (error) {
-      throw new ErrorGenerator(error.message, StatusCode.BadRequest);
+      await this.schema.validateAsync(entity)
+    } catch (error: any) {
+      throw new ErrorGenerator(error.message, StatusCodes.BAD_REQUEST)
     }
   }
 }

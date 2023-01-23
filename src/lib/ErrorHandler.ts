@@ -1,18 +1,18 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express'
 
 export class ErrorHandler {
-  async handle(err: any, req: Request, res: Response, next: NextFunction) {
+  handle(err: any, req: Request, res: Response, next: NextFunction): any {
     // logger.error(err);
     // logger.error(err.stack);
-    console.error(err);
+    console.error(err)
     switch (err.name) {
-      case "ErrorGenerator":
-        return res.responser(err.statusCode, err.message);
+      case 'ErrorGenerator':
+        return res.responser(err.statusCode, err.message)
       default:
         return res.responser(
           500,
-          "Ops ocorreu um erro, tente novamente mais tarde."
-        );
+          'Ops ocorreu um erro, tente novamente mais tarde.'
+        )
     }
   }
 }

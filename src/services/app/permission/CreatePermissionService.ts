@@ -1,20 +1,20 @@
-import { Permission } from "../../../entities/Permission";
-import { ErrorGenerator } from "../../../lib/ErrorGenerator";
-import { PermissionRepository } from "../../../repositories/permission/PermissionRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { DeepPartial } from 'typeorm'
+import { BaseEntity } from '../../../entities/BaseEntity'
+import { Permission } from '../../../entities/Permission'
+import { PermissionRepository } from '../../../repositories/permission/PermissionRepository'
 
-type PermissionRequest = {
-  name: string;
-  description: string;
-};
+interface PermissionRequest {
+  name: string
+  description: string
+}
 
 export class CreatePermissionService {
-  constructor(private permissionRepository: PermissionRepository) {}
+  constructor(private readonly permissionRepository: PermissionRepository) {}
 
   async execute({
     name,
-    description,
-  }: PermissionRequest): Promise<Permission | Error> {
+    description
+  }: PermissionRequest): Promise<DeepPartial<Permission & BaseEntity>> {
     // if (await this.permissionRepository.read({ where: { name } })) {
     //   return new ErrorGenerator(
     //     "Permission already exists",
@@ -24,8 +24,8 @@ export class CreatePermissionService {
 
     const permission = await this.permissionRepository.create({
       name,
-      description,
-    });
-    return permission;
+      description
+    })
+    return permission
   }
 }

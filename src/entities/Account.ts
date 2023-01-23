@@ -1,27 +1,27 @@
-import { Entity, Column, ManyToOne, OneToMany } from "typeorm";
-import { BaseEntity } from "./BaseEntity";
-import { Transaction } from "./Transaction";
-import { User } from "./User";
+import { Entity, Column, ManyToOne, OneToMany } from 'typeorm'
+import { BaseEntity } from './BaseEntity'
+import { Transaction } from './Transaction'
+import { User } from './User'
 
-@Entity("accounts")
+@Entity('accounts')
 export class Account extends BaseEntity {
   @Column()
-  name: string;
+  name: string
 
   @Column()
-  openingBalance: number;
+  openingBalance: number
 
   @Column()
-  color: string;
+  color: string
 
   @Column()
-  isActive: boolean;
+  isActive: boolean
 
   @ManyToOne(() => User, (user) => user.accounts)
-  user: User;
+  user: User
 
   @OneToMany(() => Transaction, (transaction) => transaction.account, {
-    cascade: true,
+    cascade: true
   })
-  transactions: Transaction[];
+  transactions: Transaction[]
 }

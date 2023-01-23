@@ -1,11 +1,10 @@
-import { NextFunction, Request, Response } from "express";
-import { ErrorGenerator } from "../lib/ErrorGenerator";
+import { NextFunction, Request, Response } from 'express'
+// import { ErrorGenerator } from '../lib/ErrorGenerator'
 // import { UserRepository } from "../repositories/user";
-import { StatusCode } from "../types/statusCode";
 
 export function can(permissionsRoutes: string[]) {
   return async (request: Request, _: Response, next: NextFunction) => {
-    const { userId } = request;
+    // const { userId } = request
     // const userRepo = new UserRepository();
     // const user = await userRepo.read({
     //   where: { id: userId },
@@ -27,12 +26,12 @@ export function can(permissionsRoutes: string[]) {
     //   );
     // }
 
-    return next();
-  };
+    next()
+  }
 }
 
 export function is(rolesRoutes: string[]) {
-  return async (request: Request, response: Response, next: NextFunction) => {
+  return (request: Request, response: Response, next: NextFunction) => {
     // const { userId } = request;
     // const userRepo = new UserRepository();
     // const user = await userRepo.read({
@@ -52,6 +51,6 @@ export function is(rolesRoutes: string[]) {
     //   return response.status(401).end();
     // }
 
-    return next();
-  };
+    next()
+  }
 }

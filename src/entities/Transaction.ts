@@ -3,27 +3,27 @@ import {
   Column,
   ManyToOne,
   CreateDateColumn,
-  JoinColumn,
-} from "typeorm";
-import { Account } from "./Account";
-import { BaseEntity } from "./BaseEntity";
-import { Category } from "./Category";
+  JoinColumn
+} from 'typeorm'
+import { Account } from './Account'
+import { BaseEntity } from './BaseEntity'
+import { Category } from './Category'
 
-@Entity("transactions")
+@Entity('transactions')
 export class Transaction extends BaseEntity {
   @CreateDateColumn()
-  date: Date;
+  date: Date
 
   @Column({ nullable: true })
-  description: string;
+  description: string
 
   @Column()
-  value: number;
+  value: number
 
   @ManyToOne(() => Account, (account) => account.transactions)
-  account: Account;
+  account: Account
 
   @ManyToOne(() => Category, (category) => category.transactions)
   @JoinColumn()
-  category: Account;
+  category: Account
 }

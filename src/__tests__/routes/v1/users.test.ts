@@ -56,8 +56,8 @@
 //   });
 // });
 
-describe("/users", () => {
-  it("Should create a new user", async () => {
-    expect(1 + 1).toBe(2);
-  });
-});
+describe('/users', () => {
+  it('Should create a new user', async () => {
+    expect(1 + 1).toBe(2)
+  })
+})

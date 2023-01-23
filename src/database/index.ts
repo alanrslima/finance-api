@@ -1,23 +1,25 @@
-import {createConnection, getConnection} from 'typeorm';
+import { createConnection } from 'typeorm'
 
-const database = {
-  async create(){
-    await createConnection();
-  },
+class Database {
+  create(): void {
+    createConnection()
+      .then(() => {})
+      .catch(() => {})
+  }
 
-  async close(){
-    await getConnection().close(); 
-  },
+  // close() {
+  //   await getConnection().close()
+  // }
 
-  async clear(){
-    const connection = getConnection();
-    const entities = connection.entityMetadatas;
+  // async clear() {
+  //   const connection = getConnection()
+  //   const entities = connection.entityMetadatas
 
-    entities.forEach(async (entity) => {
-      const repository = connection.getRepository(entity.name);
-      await repository.query(`DELETE FROM ${entity.tableName}`);
-    });
-  },
-};
+  //   entities.forEach(async (entity) => {
+  //     const repository = connection.getRepository(entity.name)
+  //     await repository.query(`DELETE FROM ${entity.tableName}`)
+  //   })
+  // }
+}
 
-export { database}
+export { Database }

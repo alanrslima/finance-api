@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express'
 
 export class GetHealthController {
   async handle(request: Request, response: Response) {
@@ -12,6 +12,6 @@ export class GetHealthController {
     //   return response.status(400).json(result.message);
     // }
 
-    return response.json({});
+    return response.json({})
   }
 }

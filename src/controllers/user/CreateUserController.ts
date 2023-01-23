@@ -1,14 +1,12 @@
-import { Request, Response } from "express";
-import { Validator } from "../../lib/Validator";
-import { DbUserRepository } from "../../repositories/user/DbUserRepository";
-import { userSchema } from "../../repositories/user/UserSchema";
-import { CreateUserService } from "../../services/app/user/CreateUserService";
-import { StatusCode } from "../../types/statusCode";
+import { Request, Response } from 'express'
+import { StatusCodes } from 'http-status-codes'
+import { DbUserRepository } from '../../repositories/user/DbUserRepository'
+import { CreateUserService } from '../../services/app/user/CreateUserService'
 export class CreateUserController {
-  async handle(request: Request, response: Response) {
-    const userRepository = new DbUserRepository();
-    const createUserService = new CreateUserService(userRepository);
-    const result = await createUserService.execute(request.body);
-    return response.responser(StatusCode.Created, "User created", result);
+  async handle(request: Request, response: Response): Promise<void> {
+    const userRepository = new DbUserRepository()
+    const createUserService = new CreateUserService(userRepository)
+    const result = await createUserService.execute(request.body)
+    response.responser(StatusCodes.CREATED, 'User created', result)
   }
 }

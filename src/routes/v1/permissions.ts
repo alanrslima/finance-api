@@ -1,13 +1,14 @@
-import { CreatePermissionController } from "../../controllers/permission/CreatePermissionController";
-import { Router } from "express";
-import { ensuredAuthenticated } from "../../middleware/ensuredAuthenticated";
+import { CreatePermissionController } from '../../controllers/permission/CreatePermissionController'
+import { RequestHandler, Router } from 'express'
+import { ensuredAuthenticated } from '../../middlewares/ensuredAuthenticated'
 
-const router = Router();
+const router = Router()
+const createPermissionController = new CreatePermissionController()
 
 router.post(
-  "/",
+  '/',
   ensuredAuthenticated(),
-  new CreatePermissionController().handle
-);
+  createPermissionController.handle as RequestHandler
+)
 
-export { router as permissionsRouter };
+export { router as permissionsRouter }

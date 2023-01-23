@@ -1,52 +1,52 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
 export class CreateRefreshTokens1657467839193 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "refresh_tokens",
+        name: 'refresh_tokens',
         columns: [
-          { name: "id", isPrimary: true, type: "varchar(36)" },
+          { name: 'id', isPrimary: true, type: 'varchar(36)' },
           {
-            name: "expiresIn",
-            type: "numeric",
+            name: 'expiresIn',
+            type: 'numeric'
           },
           {
-            name: "userId",
-            type: "varchar(36)",
+            name: 'userId',
+            type: 'varchar(36)'
           },
           {
-            name: "createdAt",
-            type: "timestamp",
-            default: "now()",
+            name: 'createdAt',
+            type: 'timestamp',
+            default: 'now()'
           },
           {
-            name: "updatedAt",
-            type: "timestamp",
-            default: "now()",
-            onUpdate: "now()",
+            name: 'updatedAt',
+            type: 'timestamp',
+            default: 'now()',
+            onUpdate: 'now()'
           },
           {
-            name: "deletedAt",
-            type: "timestamp",
-            isNullable: true,
-          },
+            name: 'deletedAt',
+            type: 'timestamp',
+            isNullable: true
+          }
         ],
         foreignKeys: [
           {
-            columnNames: ["userId"],
-            referencedColumnNames: ["id"],
-            referencedTableName: "users",
-            name: "fk_refresh_tokens_user",
-            onDelete: "RESTRICT",
-            onUpdate: "CASCADE",
-          },
-        ],
+            columnNames: ['userId'],
+            referencedColumnNames: ['id'],
+            referencedTableName: 'users',
+            name: 'fk_refresh_tokens_user',
+            onDelete: 'RESTRICT',
+            onUpdate: 'CASCADE'
+          }
+        ]
       })
-    );
+    )
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("refresh_tokens");
+    await queryRunner.dropTable('refresh_tokens')
   }
 }

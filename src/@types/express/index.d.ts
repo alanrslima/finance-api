@@ -1,15 +1,15 @@
 declare namespace Express {
   export interface Request {
-    userId: string;
+    userId: string
   }
 
   export interface Response {
     responser: (
       status: number,
-      message = "",
+      message = '',
       data = {},
       error = null,
-      type = "json"
-    ) => {};
+      type = 'json'
+    ) => {}
   }
 }

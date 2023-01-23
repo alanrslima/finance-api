@@ -1,17 +1,16 @@
-import { AccountRepository } from "./AccountRepository";
-import { DbBaseRepository } from "../base/DbBaseRepository";
-import { accountSchema } from "./AccountSchema";
-import { Account } from "../../entities/Account";
+import { AccountRepository } from './AccountRepository'
+import { DbBaseRepository } from '../base/DbBaseRepository'
+import { accountSchema } from './AccountSchema'
+import { Account } from '../../entities/Account'
 
 export class DbAccountRepository
   extends DbBaseRepository<Account>
-  implements AccountRepository
-{
+  implements AccountRepository {
   constructor() {
-    super({ entity: Account, schema: accountSchema });
+    super({ entity: Account, schema: accountSchema })
   }
 
   async listByUserId(userId: string): Promise<Account[]> {
-    return this.repository.find({ where: { user: { id: userId } } });
+    return await this.repository.find({ where: { user: { id: userId } } })
   }
 }

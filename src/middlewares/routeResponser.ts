@@ -1,16 +1,16 @@
-import { NextFunction, Response } from "express";
+import { NextFunction, Response } from 'express'
 
 export const routeResponser = (
   _: any,
   response: Response,
   next: NextFunction
-) => {
+): void => {
   response.responser = (
     status,
-    message = "",
+    message = '',
     data = {},
     error = null,
-    type = "json"
+    type = 'json'
   ) => {
     // if (config.webserver.logs.active) {
     //   const urlsDontLog = ['/health', '/users/me'];
@@ -20,7 +20,7 @@ export const routeResponser = (
     // Log.write();
     // }
 
-    if (error) {
+    if (error !== null) {
       // console.error(message, error);
       // console.log("Error details:", error);
     }
@@ -28,9 +28,9 @@ export const routeResponser = (
     return response.status(status).type(type).send({
       data,
       status,
-      message,
-    });
-  };
+      message
+    })
+  }
 
-  next();
-};
+  next()
+}

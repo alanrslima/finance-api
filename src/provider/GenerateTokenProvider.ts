@@ -1,18 +1,18 @@
-import { sign } from "jsonwebtoken";
+import { sign } from 'jsonwebtoken'
 
-type GenerateTokenProviderProps = {
-  userId: string;
-};
+interface GenerateTokenProviderProps {
+  userId: string
+}
 
 class GenerateTokenProvider {
-  async execute({ userId }: GenerateTokenProviderProps) {
+  execute({ userId }: GenerateTokenProviderProps): string {
     const token = sign({}, process.env.SECRET_JWT, {
       subject: userId,
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
+      expiresIn: process.env.JWT_EXPIRES_IN
+    })
 
-    return token;
+    return token
   }
 }
 
-export { GenerateTokenProvider };
+export { GenerateTokenProvider }

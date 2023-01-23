@@ -1,26 +1,26 @@
-import { Role } from "../../../entities/Role";
-import { PermissionRepository } from "../../../repositories/permission/PermissionRepository";
-import { RoleRepository } from "../../../repositories/role/RoleRepository";
+import { Role } from '../../../entities/Role'
+import { PermissionRepository } from '../../../repositories/permission/PermissionRepository'
+import { RoleRepository } from '../../../repositories/role/RoleRepository'
 
-type RolePermissionRequest = {
-  roleId: string;
-  permissions: string[];
-};
+interface RolePermissionRequest {
+  roleId: string
+  permissions: string[]
+}
 
 export class CreateRolePermissionService {
   constructor(
-    private roleRepository: RoleRepository,
-    private permissionRepository: PermissionRepository
+    private readonly roleRepository: RoleRepository,
+    private readonly permissionRepository: PermissionRepository
   ) {}
 
   async execute({
     roleId,
-    permissions,
+    permissions
   }: RolePermissionRequest): Promise<Role | Error> {
-    const role = await this.roleRepository.read(roleId);
+    const role = await this.roleRepository.read({ where: { id: roleId } })
 
-    if (!role) {
-      return new Error("Role does not exists!");
+    if (role === null) {
+      return new Error('Role does not exists!')
     }
 
     // const permissionsExists = await this.permissionRepository.listByIds(
@@ -29,7 +29,7 @@ export class CreateRolePermissionService {
 
     // role.permissions = permissionsExists;
 
-    await this.roleRepository.create(role);
-    return role;
+    await this.roleRepository.create(role)
+    return role
   }
 }

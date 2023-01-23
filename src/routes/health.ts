@@ -28,11 +28,12 @@
 
 // module.exports = router;
 
-import { Router } from "express";
-import { GetHealthController } from "../controllers/health/GetHealthController";
+import { RequestHandler, Router } from 'express'
+import { GetHealthController } from '../controllers/health/GetHealthController'
 
-const router = Router();
+const router = Router()
+const getHealthController = new GetHealthController()
 
-router.get("/roles/:roleId", new GetHealthController().handle);
+router.get('/roles/:roleId', getHealthController.handle as RequestHandler)
 
-export { router };
+export { router }

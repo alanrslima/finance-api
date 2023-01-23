@@ -1,7 +1,8 @@
-import { RefreshTokenRepository } from "./RefreshTokenRepository";
-import { DbBaseRepository } from "../base/DbBaseRepository";
-import { refreshTokenSchema } from "./RefreshTokenSchema";
-import { RefreshToken } from "../../entities/RefreshToken";
+import { RefreshTokenRepository } from './RefreshTokenRepository'
+import { DbBaseRepository } from '../base/DbBaseRepository'
+import { refreshTokenSchema } from './RefreshTokenSchema'
+import { RefreshToken } from '../../entities/RefreshToken'
+import { SelectQueryBuilder } from 'typeorm'
 
 export class DbRefreshTokenRepository
   extends DbBaseRepository<RefreshToken>
@@ -10,26 +11,29 @@ export class DbRefreshTokenRepository
   constructor() {
     super({
       entity: RefreshToken,
-      schema: refreshTokenSchema,
-    });
+      schema: refreshTokenSchema
+    })
   }
-  async removeByUserId(userId: string | number) {
+
+  async removeByUserId(
+    userId: string | number
+  ): Promise<SelectQueryBuilder<RefreshToken>> {
     return await this.repository
       .createQueryBuilder()
       .delete()
       .from(RefreshToken)
-      .where("userId = :userId", { userId })
-      .execute();
+      .where('userId = :userId', { userId })
+      .execute()
   }
 
   async readWithUser(refreshTokenId: string): Promise<RefreshToken> {
     return await this.repository.findOne({
       where: { id: refreshTokenId },
-      relations: ["user"],
-    });
+      relations: ['user']
+    })
   }
 
   async listByUserId(userId: string | number) {
-    return await this.repository.find({ where: { user: { id: userId } } });
+    return await this.repository.find({ where: { user: { id: userId } } })
   }
 }

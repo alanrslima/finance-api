@@ -1,14 +1,14 @@
-import { Entity, Column, OneToOne, OneToMany } from "typeorm";
-import { BaseEntity } from "./BaseEntity";
-import { Transaction } from "./Transaction";
+import { Entity, Column, OneToMany } from 'typeorm'
+import { BaseEntity } from './BaseEntity'
+import { Transaction } from './Transaction'
 
-@Entity("categories")
+@Entity('categories')
 export class Category extends BaseEntity {
   @Column()
-  name: string;
+  name: string
 
   @OneToMany(() => Transaction, (transaction) => transaction.category, {
-    cascade: true,
+    cascade: true
   })
-  transactions: Transaction[];
+  transactions: Transaction[]
 }

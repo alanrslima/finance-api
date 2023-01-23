@@ -4,49 +4,49 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
-  OneToMany,
-} from "typeorm";
-import { Account } from "./Account";
-import { BaseEntity } from "./BaseEntity";
-import { RefreshToken } from "./RefreshToken";
-import { Role } from "./Role";
+  OneToMany
+} from 'typeorm'
+import { Account } from './Account'
+import { BaseEntity } from './BaseEntity'
+import { RefreshToken } from './RefreshToken'
+import { Role } from './Role'
 
-@Entity("users")
+@Entity('users')
 export class User extends BaseEntity {
   @Column({ unique: true })
-  email: string;
+  email: string
 
   @Column({ nullable: true })
-  password: string;
+  password: string
 
   @Column({ nullable: true })
-  firstName: string;
+  firstName: string
 
   @Column({ nullable: true })
-  lastName: string;
+  lastName: string
 
   @Column({ nullable: true })
-  phone: string;
+  phone: string
 
   @Column({ nullable: true })
-  profile: string;
+  profile: string
 
   @CreateDateColumn({ nullable: true })
-  verifiedAt: Date;
+  verifiedAt: Date
 
   @ManyToMany(() => Role)
   @JoinTable({
-    name: "users_roles",
-    joinColumns: [{ name: "userId" }],
-    inverseJoinColumns: [{ name: "roleId" }],
+    name: 'users_roles',
+    joinColumns: [{ name: 'userId' }],
+    inverseJoinColumns: [{ name: 'roleId' }]
   })
-  roles: Role[];
+  roles: Role[]
 
   @OneToMany(() => RefreshToken, (refreshToken) => refreshToken.user, {
-    cascade: true,
+    cascade: true
   })
-  refreshTokens: RefreshToken[];
+  refreshTokens: RefreshToken[]
 
   @OneToMany(() => Account, (account) => account.user, { cascade: true })
-  accounts: Account[];
+  accounts: Account[]
 }

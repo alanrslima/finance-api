@@ -1,20 +1,20 @@
-import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
-import { BaseEntity } from "./BaseEntity";
-import { Permission } from "./Permission";
+import { Column, Entity, JoinTable, ManyToMany } from 'typeorm'
+import { BaseEntity } from './BaseEntity'
+import { Permission } from './Permission'
 
-@Entity("roles")
+@Entity('roles')
 export class Role extends BaseEntity {
   @Column()
-  name: string;
+  name: string
 
   @Column()
-  description: string;
+  description: string
 
   @ManyToMany(() => Permission)
   @JoinTable({
-    name: "permissions_roles",
-    joinColumns: [{ name: "roleId" }],
-    inverseJoinColumns: [{ name: "permissionId" }],
+    name: 'permissions_roles',
+    joinColumns: [{ name: 'roleId' }],
+    inverseJoinColumns: [{ name: 'permissionId' }]
   })
-  permissions: Permission[];
+  permissions: Permission[]
 }
