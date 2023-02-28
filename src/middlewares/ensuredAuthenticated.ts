@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { decode, verify } from 'jsonwebtoken'
 import { ErrorGenerator } from '../lib/ErrorGenerator'
 import { StatusCodes } from 'http-status-codes'
+import { constants } from '../config/constants'
 
 export function ensuredAuthenticated() {
   return (request: Request, _: Response, next: NextFunction) => {
@@ -14,7 +15,7 @@ export function ensuredAuthenticated() {
     const [, token] = authHeaders.split(' ')
 
     try {
-      verify(token, process.env.SECRET_JWT)
+      verify(token, constants.SECRET_JWT)
       const dec = decode(token)
       request.userId = String(dec?.sub)
 

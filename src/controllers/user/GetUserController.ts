@@ -9,6 +9,6 @@ export class GetUserController {
     const userRepository = new DbUserRepository()
     const getUserService = new GetUserService(userRepository)
     const result = await getUserService.execute({ id: userId })
-    response.responser(StatusCodes.OK, 'User listed', result)
+    response.responser(StatusCodes.OK, 'User listed', result != null || {})
   }
 }

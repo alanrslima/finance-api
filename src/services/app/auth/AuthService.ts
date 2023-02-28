@@ -51,7 +51,7 @@ export class AuthService {
       userId: userExisted.id
     })
 
-    await this.refreshTokenRepository.removeByUserId(userExisted.id)
+    // await this.refreshTokenRepository.removeByUserId(userExisted.id)
     const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
       this.refreshTokenRepository
     )

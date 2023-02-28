@@ -1,7 +1,7 @@
+import { StatusCodes } from 'http-status-codes'
 import { User } from '../../../entities/User'
 import { ErrorGenerator } from '../../../lib/ErrorGenerator'
 import { UserRepository } from '../../../repositories/user/UserRepository'
-import { StatusCode } from '../../../types/statusCode'
 import { GetUserService } from './GetUserService'
 
 export class EditUserService {
@@ -14,7 +14,7 @@ export class EditUserService {
     const getUserService = new GetUserService(this.userRepository)
     const existUser = await getUserService.execute({ id })
     if (existUser == null) {
-      throw new ErrorGenerator('User not exists', StatusCode.BadRequest)
+      throw new ErrorGenerator('User not exists', StatusCodes.BAD_REQUEST)
     }
     return await this.userRepository.update({
       ...existUser,

@@ -5,12 +5,14 @@ import { UserRepository } from './UserRepository'
 
 export class DbUserRepository
   extends DbBaseRepository<User>
-  implements UserRepository {
+  implements UserRepository
+{
   constructor() {
     super({ entity: User, schema: userSchema })
   }
 
   async readByEmail(email: string): Promise<User | undefined> {
-    return await this.repository.findOne({ where: { email } })
+    return undefined
+    // return await this.repository.findOne({ where: { email } })
   }
 }
