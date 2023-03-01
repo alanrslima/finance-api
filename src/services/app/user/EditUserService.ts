@@ -12,7 +12,7 @@ export class EditUserService {
     { email, firstName, lastName, phone, profile }: User
   ): Promise<User> {
     const getUserService = new GetUserService(this.userRepository)
-    const existUser = await getUserService.execute({ id })
+    const existUser = await getUserService.execute({ where: { id } })
     if (existUser == null) {
       throw new ErrorGenerator('User not exists', StatusCodes.BAD_REQUEST)
     }

@@ -5,7 +5,7 @@ import { BaseEntity } from '../../../entities/BaseEntity'
 import { RefreshToken } from '../../../entities/RefreshToken'
 import { User } from '../../../entities/User'
 import { ErrorGenerator } from '../../../lib/ErrorGenerator'
-import { GenerateRefreshTokenProvider } from '../../../provider/GenerateRefreshTokenProvider'
+// import { GenerateRefreshTokenProvider } from '../../../provider/GenerateRefreshTokenProvider'
 import { GenerateTokenProvider } from '../../../provider/GenerateTokenProvider'
 import { InMemoryRefreshTokenRepository } from '../../../repositories/refreshToken/InMemoryRefreshTokenRepository'
 import { RefreshTokenRepository } from '../../../repositories/refreshToken/RefreshTokenRepository'
@@ -22,10 +22,13 @@ export class AuthService {
 
   async execute(user: User): Promise<{
     token: string
-    refreshToken: DeepPartial<RefreshToken & BaseEntity>
+    // refreshToken: DeepPartial<RefreshToken & BaseEntity>
   }> {
     const getUserService = new GetUserService(this.userRepository)
-    const userExisted = await getUserService.execute({ email: user.email })
+    const userExisted = await getUserService.execute({
+      where: { email: user.email },
+      select: { password: true, deletedAt: true, id: true }
+    })
 
     if (userExisted == null) {
       throw new ErrorGenerator(
@@ -52,13 +55,16 @@ export class AuthService {
     })
 
     // await this.refreshTokenRepository.removeByUserId(userExisted.id)
-    const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
-      this.refreshTokenRepository
-    )
-    const refreshToken = await generateRefreshTokenProvider.execute({
-      user: userExisted
-    })
+    // const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
+    //   this.refreshTokenRepository
+    // )
+    // const refreshToken = await generateRefreshTokenProvider.execute({
+    //   user: userExisted
+    // })
 
-    return { token, refreshToken }
+    return {
+      token
+      // refreshToken
+    }
   }
 }

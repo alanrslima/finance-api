@@ -31,7 +31,10 @@ describe('Edit user service', () => {
     const editUser = new User()
     editUser.email = 'test@email.com'
     editUser.firstName = 'Test'
-    const response = await editUserService.execute(createdUser.id, editUser)
+    const response = await editUserService.execute(
+      createdUser.id as string,
+      editUser
+    )
     expect(response).toHaveProperty('email', 'test@email.com')
     expect(response).toHaveProperty('firstName', 'Test')
   })
@@ -47,7 +50,7 @@ describe('Edit user service', () => {
     editUser.firstName = 'Test'
     editUser.id = '123'
     try {
-      await editUserService.execute(createdUser.id, editUser)
+      await editUserService.execute(createdUser.id as string, editUser)
     } catch (error) {
       expect(error).toBeInstanceOf(ErrorGenerator)
     }

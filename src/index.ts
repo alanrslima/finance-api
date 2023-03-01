@@ -10,7 +10,7 @@ import { usersRouter } from './routes/v1/users'
 import { authRouter } from './routes/v1/auth'
 // import session from 'express-session'
 import cors from 'cors'
-import passport from 'passport'
+// import passport from 'passport'
 
 import { Database } from './database'
 import { accountsRouter } from './routes/v1/accounts'
@@ -35,8 +35,8 @@ const errorHandler = new ErrorHandler()
 // )
 
 // Configure passport ADFS;
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 // Use custom middlewares to responses in routes;
 app.use(routeResponser)

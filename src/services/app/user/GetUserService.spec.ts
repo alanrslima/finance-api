@@ -12,7 +12,7 @@ describe('Get user service', () => {
       password: '12345678'
     })
 
-    const user = await getUserService.execute({ id: newUser.id })
+    const user = await getUserService.execute({ where: { id: newUser.id } })
     expect(user).not.toBeUndefined()
     expect(user).toEqual(expect.objectContaining(newUser))
   })
@@ -27,7 +27,9 @@ describe('Get user service', () => {
       password: '12345678'
     })
 
-    const user = await getUserService.execute({ email: newUser.email })
+    const user = await getUserService.execute({
+      where: { email: newUser.email }
+    })
     expect(user).not.toBeUndefined()
     expect(user).toEqual(expect.objectContaining(newUser))
   })
@@ -37,7 +39,7 @@ describe('Get user service', () => {
     const getUserService = new GetUserService(userRepository)
 
     const id = '12345678'
-    const user = await getUserService.execute({ id })
+    const user = await getUserService.execute({ where: { id } })
     expect(user).toBeUndefined()
   })
 
@@ -51,8 +53,8 @@ describe('Get user service', () => {
       password: '12345678'
     })
 
-    await userRepository.delete(newUser.id)
-    const user = await getUserService.execute({ id: newUser.id })
+    await userRepository.delete({ where: { id: newUser.id } })
+    const user = await getUserService.execute({ where: { id: newUser.id } })
 
     expect(user).toHaveProperty('deletedAt')
     expect(user?.deletedAt).toBeInstanceOf(Date)

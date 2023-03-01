@@ -33,7 +33,8 @@ export class CreatePermissions1627508707913 implements MigrationInterface {
           {
             name: 'deletedAt',
             type: 'timestamp',
-            isNullable: true
+            isNullable: true,
+            default: null
           }
         ]
       })

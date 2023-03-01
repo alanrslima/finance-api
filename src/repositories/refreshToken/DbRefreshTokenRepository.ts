@@ -1,18 +1,19 @@
 import { RefreshTokenRepository } from './RefreshTokenRepository'
 import { DbBaseRepository } from '../base/DbBaseRepository'
-// import { refreshTokenSchema } from './RefreshTokenSchema'
+import { refreshTokenSchema } from './RefreshTokenSchema'
 import { RefreshToken } from '../../entities/RefreshToken'
 // import { SelectQueryBuilder } from 'typeorm'
 
 export class DbRefreshTokenRepository
   extends DbBaseRepository<RefreshToken>
-  implements RefreshTokenRepository {
-  // constructor() {
-  //   super({
-  //     entity: RefreshToken,
-  //     schema: refreshTokenSchema
-  //   })
-  // }
+  implements RefreshTokenRepository
+{
+  constructor() {
+    super({
+      entity: RefreshToken,
+      schema: refreshTokenSchema
+    })
+  }
   // async removeByUserId(
   //   userId: string | number
   // ): Promise<SelectQueryBuilder<RefreshToken>> {

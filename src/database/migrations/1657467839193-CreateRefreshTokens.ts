@@ -29,7 +29,8 @@ export class CreateRefreshTokens1657467839193 implements MigrationInterface {
           {
             name: 'deletedAt',
             type: 'timestamp',
-            isNullable: true
+            isNullable: true,
+            default: null
           }
         ],
         foreignKeys: [

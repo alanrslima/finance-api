@@ -1,4 +1,4 @@
-import { PrimaryColumn, CreateDateColumn } from 'typeorm'
+import { PrimaryColumn, CreateDateColumn, DeleteDateColumn } from 'typeorm'
 import { v4 as uuid } from 'uuid'
 
 export class BaseEntity {
@@ -11,7 +11,7 @@ export class BaseEntity {
   @CreateDateColumn()
   updatedAt: Date
 
-  @CreateDateColumn({ nullable: true })
+  @DeleteDateColumn({ nullable: true, default: null, select: false })
   deletedAt?: Date
 
   constructor() {

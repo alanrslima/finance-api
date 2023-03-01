@@ -1,10 +1,22 @@
-import { createConnection } from 'typeorm'
+// import { createConnection } from 'typeorm'
+import { MysqlDataSource } from './data-source'
 
 class Database {
   create(): void {
-    createConnection()
-      .then(() => {})
-      .catch(() => {})
+    MysqlDataSource.initialize()
+      .then(() => {
+        console.log('Data Source has been initialized!')
+      })
+      .catch((err) => {
+        console.error('Error during Data Source initialization', err)
+      })
+    // createConnection()
+    //   .then((res) => {
+    //     console.log('DB Connect', res)
+    //   })
+    //   .catch((err) => {
+    //     console.log('DB connection error', err)
+    //   })
   }
 
   // close() {

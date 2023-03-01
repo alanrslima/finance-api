@@ -8,7 +8,7 @@ export class GetUserController {
     const { userId } = request
     const userRepository = new DbUserRepository()
     const getUserService = new GetUserService(userRepository)
-    const result = await getUserService.execute({ id: userId })
-    response.responser(StatusCodes.OK, 'User listed', result != null || {})
+    const result = await getUserService.execute({ where: { id: userId } })
+    response.responser(StatusCodes.OK, 'User listed', result)
   }
 }

@@ -7,9 +7,9 @@ declare namespace Express {
     responser: (
       status: number,
       message = '',
-      data = {},
+      data = any,
       error = null,
-      type = 'json'
+      type = 'json',
     ) => {}
   }
 }
