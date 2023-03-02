@@ -24,7 +24,7 @@ describe('Auth service', () => {
     user.email = 'nonexistent@email.com'
     user.password = '12345678'
     try {
-      await authService.execute(user)
+      await authService.execute({ email: user.email, password: user.password })
     } catch (error) {
       expect(error).toBeInstanceOf(ErrorGenerator)
       expect(error).toHaveProperty('message', 'Usuário ou senha inválidos!')
@@ -48,10 +48,13 @@ describe('Auth service', () => {
     const authService = new AuthService(userRepository, refreshTokenRepository)
 
     try {
-      await authService.execute(createdUser)
+      await authService.execute({
+        email: createdUser.email,
+        password: createdUser.password as string
+      })
     } catch (error) {
       expect(error).toBeInstanceOf(ErrorGenerator)
-      expect(error).toHaveProperty('message', 'Usuário desativado')
+      expect(error).toHaveProperty('message', 'Usuário ou senha inválidos!')
       expect(error).toHaveProperty('statusCode', StatusCodes.UNAUTHORIZED)
     }
   })
@@ -70,7 +73,10 @@ describe('Auth service', () => {
 
     createdUser.password = 'wrong_password'
     try {
-      await authService.execute(createdUser)
+      await authService.execute({
+        email: createdUser.email,
+        password: createdUser.password
+      })
     } catch (error) {
       expect(error).toBeInstanceOf(ErrorGenerator)
       expect(error).toHaveProperty('message', 'Usuário ou senha inválidos!')
@@ -90,7 +96,10 @@ describe('Auth service', () => {
     const refreshTokenRepository = new InMemoryRefreshTokenRepository()
     const authService = new AuthService(userRepository, refreshTokenRepository)
 
-    const response = await authService.execute(user)
+    const response = await authService.execute({
+      email: user.email,
+      password: user.password
+    })
     expect(response).toHaveProperty('token')
     expect(response).toHaveProperty('refreshToken')
   })
@@ -107,7 +116,10 @@ describe('Auth service', () => {
     const refreshTokenRepository = new InMemoryRefreshTokenRepository()
     const authService = new AuthService(userRepository, refreshTokenRepository)
 
-    const { refreshToken } = await authService.execute(user)
+    const { refreshToken } = await authService.execute({
+      email: user.email,
+      password: user.password
+    })
     const userRefreshTokens = await refreshTokenRepository.listByUserId(
       createdUser.id
     )

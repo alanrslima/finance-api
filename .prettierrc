@@ -4,5 +4,7 @@
   "tabWidth": 2,
   "useTabs": false,
   "bracketSpacing": true,
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "bracketSameLine": true,
+  "printWidth": 80
 }

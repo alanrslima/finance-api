@@ -1,34 +1,29 @@
 import { compare } from 'bcryptjs'
 import { StatusCodes } from 'http-status-codes'
-import { DeepPartial } from 'typeorm'
-import { BaseEntity } from '../../../entities/BaseEntity'
 import { RefreshToken } from '../../../entities/RefreshToken'
-import { User } from '../../../entities/User'
 import { ErrorGenerator } from '../../../lib/ErrorGenerator'
-// import { GenerateRefreshTokenProvider } from '../../../provider/GenerateRefreshTokenProvider'
+import { GenerateRefreshTokenProvider } from '../../../provider/GenerateRefreshTokenProvider'
 import { GenerateTokenProvider } from '../../../provider/GenerateTokenProvider'
-import { InMemoryRefreshTokenRepository } from '../../../repositories/refreshToken/InMemoryRefreshTokenRepository'
 import { RefreshTokenRepository } from '../../../repositories/refreshToken/RefreshTokenRepository'
 import { UserRepository } from '../../../repositories/user/UserRepository'
-import { GetUserService } from '../user/GetUserService'
 
 export class AuthService {
   constructor(
     private readonly userRepository: UserRepository,
-    private readonly refreshTokenRepository:
-      | RefreshTokenRepository
-      | InMemoryRefreshTokenRepository
+    private readonly refreshTokenRepository: RefreshTokenRepository
   ) {}
 
-  async execute(user: User): Promise<{
+  async execute({
+    email,
+    password
+  }: {
+    email: string
+    password: string
+  }): Promise<{
     token: string
-    // refreshToken: DeepPartial<RefreshToken & BaseEntity>
+    refreshToken: RefreshToken
   }> {
-    const getUserService = new GetUserService(this.userRepository)
-    const userExisted = await getUserService.execute({
-      where: { email: user.email },
-      select: { password: true, deletedAt: true, id: true }
-    })
+    const userExisted = await this.userRepository.readByEmailWithPassword(email)
 
     if (userExisted == null) {
       throw new ErrorGenerator(
@@ -37,11 +32,7 @@ export class AuthService {
       )
     }
 
-    if (userExisted.deletedAt != null) {
-      throw new ErrorGenerator('Usuário desativado', StatusCodes.UNAUTHORIZED)
-    }
-
-    const passwordMatch = await compare(user.password, userExisted.password)
+    const passwordMatch = await compare(password, userExisted?.password ?? '')
     if (!passwordMatch) {
       throw new ErrorGenerator(
         'Usuário ou senha inválidos!',
@@ -51,20 +42,21 @@ export class AuthService {
 
     const generateTokenProvider = new GenerateTokenProvider()
     const token = generateTokenProvider.execute({
-      userId: userExisted.id
+      userId: userExisted?.id ?? ''
     })
 
-    // await this.refreshTokenRepository.removeByUserId(userExisted.id)
-    // const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
-    //   this.refreshTokenRepository
-    // )
-    // const refreshToken = await generateRefreshTokenProvider.execute({
-    //   user: userExisted
-    // })
+    await this.refreshTokenRepository.deleteByUserId(userExisted.id)
+
+    const generateRefreshTokenProvider = new GenerateRefreshTokenProvider(
+      this.refreshTokenRepository
+    )
+    const refreshToken = await generateRefreshTokenProvider.execute({
+      user: userExisted
+    })
 
     return {
-      token
-      // refreshToken
+      token,
+      refreshToken
     }
   }
 }

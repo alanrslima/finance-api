@@ -14,7 +14,7 @@ export class Account extends BaseEntity {
   @Column()
   color: string
 
-  @Column()
+  @Column({ default: true })
   isActive: boolean
 
   @ManyToOne(() => User, (user) => user.accounts)

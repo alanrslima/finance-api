@@ -1,16 +1,20 @@
-import { DeepPartial, FindOneOptions } from 'typeorm'
-import { BaseEntity } from '../../entities/BaseEntity'
+import {
+  DeleteResult,
+  FindManyOptions,
+  FindOptionsWhere,
+  ObjectID
+} from 'typeorm'
 
 export interface BaseRepository<Entity> {
   // create: (
-  //   entity: DeepPartial<Entity & BaseEntity>
-  // ) => Promise<DeepPartial<Entity & BaseEntity>>
+  //   entity: Entity & BaseEntity
+  // ) => Promise<Entity & BaseEntity>
   // /**
   //  * Get an entity by ID
   //  * @param id
   //  */
   // read: (options: FindOneOptions<Entity & BaseEntity>) => Promise<Entity | null>
-  // update: (entity: DeepPartial<Entity & BaseEntity>) => Promise<Entity>
+  // update: (entity: Entity & BaseEntity>) => Promise<Entity
   // /**
   //  * Make a logic deletion on database
   //  * @param id
@@ -24,11 +28,24 @@ export interface BaseRepository<Entity> {
 
   // create: (entity: DeepPartial<Entity & BaseEntity>) => Promise<Entity>
 
-  read: (id: string) => Promise<Entity | null>
+  create: (entity: Entity) => Promise<Entity>
 
-  update: (entity: DeepPartial<Entity & BaseEntity>) => Promise<any>
+  readById: (id: any) => Promise<Entity | null>
 
-  create: <T extends DeepPartial<Entity & BaseEntity>>(entity: T) => Promise<T>
+  update: (entity: Entity) => Promise<Entity>
 
-  // delete: (id: string) => Promise<any>
+  delete: (
+    criteria:
+      | string
+      | string[]
+      | number
+      | number[]
+      | Date
+      | Date[]
+      | ObjectID
+      | ObjectID[]
+      | FindOptionsWhere<Entity>
+  ) => Promise<DeleteResult>
+
+  list: (options?: FindManyOptions<Entity>) => Promise<Entity[]>
 }

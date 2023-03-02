@@ -1,7 +1,5 @@
 // import { client } from "../prisma/client"
 import dayjs from 'dayjs'
-import { DeepPartial } from 'typeorm'
-import { BaseEntity } from '../entities/BaseEntity'
 import { RefreshToken } from '../entities/RefreshToken'
 import { User } from '../entities/User'
 import { InMemoryRefreshTokenRepository } from '../repositories/refreshToken/InMemoryRefreshTokenRepository'
@@ -20,17 +18,16 @@ class GenerateRefreshTokenProvider {
 
   async execute({
     user
-  }: GenerateRefreshTokenProviderProps): Promise<
-    DeepPartial<RefreshToken & BaseEntity>
-  > {
+  }: GenerateRefreshTokenProviderProps): Promise<RefreshToken> {
     const expiresIn = dayjs()
       .add(Number(process.env.JWT_REFRESH_TOKEN_SECONDS), 'seconds')
       .unix()
 
-    const result = await this.refreshTokenRepository.create({
-      expiresIn,
-      user
-    })
+    const refreshToken = new RefreshToken()
+    refreshToken.expiresIn = expiresIn
+    refreshToken.user = user
+
+    const result = await this.refreshTokenRepository.create(refreshToken)
     delete result.user
     return result
   }

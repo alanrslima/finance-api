@@ -5,15 +5,23 @@ import { userSchema } from './UserSchema'
 
 export class InMemoryUserRepository
   extends InMemoryBaseRepository<User>
-  implements UserRepository {
+  implements UserRepository
+{
   constructor() {
     super({ schema: userSchema })
   }
 
-  async readByEmail(email: string): Promise<User | undefined> {
-    return await new Promise((resolve, reject) => {
-      const user = this.items.find((item) => item.email === email)
-      resolve(user)
+  async readByEmail(email: string): Promise<User | null> {
+    return await new Promise((resolve) => {
+      const item = this.items.find((user) => user.email === email) ?? null
+      resolve(item)
+    })
+  }
+
+  async readByEmailWithPassword(email: string): Promise<User | null> {
+    return await new Promise((resolve) => {
+      const item = this.items.find((user) => user.email === email) ?? null
+      resolve(item)
     })
   }
 }

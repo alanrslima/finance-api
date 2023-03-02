@@ -8,17 +8,17 @@ export class CreateUserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   async execute(user: User): Promise<User> {
-    const existUser = await this.userRepository.read({
-      where: { email: user.email }
-    })
+    const existUser = await this.userRepository.readByEmail(user.email)
     if (existUser != null) {
       throw new ErrorGenerator('User already exists', StatusCodes.BAD_REQUEST)
     }
-    const passwordHash = await hash(user.password, 8)
-    const createdUser = await this.userRepository.create({
-      ...user,
-      password: passwordHash
-    })
-    return createdUser as User
+    const newUser = user
+    if (user?.password != null) {
+      const passwordHash = await hash(user.password, 8)
+      newUser.password = passwordHash
+    }
+    const createdUser = await this.userRepository.create(newUser)
+    delete createdUser.password
+    return createdUser
   }
 }

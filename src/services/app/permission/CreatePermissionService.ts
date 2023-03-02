@@ -21,11 +21,10 @@ export class CreatePermissionService {
     //     StatusCode.BadRequest
     //   );
     // }
-
-    const permission = await this.permissionRepository.create({
-      name,
-      description
-    })
-    return permission
+    const permission = new Permission()
+    permission.name = name
+    permission.description = description
+    const newPermission = await this.permissionRepository.create(permission)
+    return newPermission
   }
 }

@@ -11,8 +11,14 @@ export class DbUserRepository
     super({ entity: User, schema: userSchema })
   }
 
-  async readByEmail(email: string): Promise<User | undefined> {
-    return undefined
-    // return await this.repository.findOne({ where: { email } })
+  async readByEmail(email: string): Promise<User | null> {
+    return await this.repository.findOne({ where: { email } })
+  }
+
+  async readByEmailWithPassword(email: string): Promise<User | null> {
+    return await this.repository.findOne({
+      where: { email },
+      select: { id: true, password: true }
+    })
   }
 }

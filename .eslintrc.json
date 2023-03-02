@@ -14,6 +14,8 @@
     "indent": "off",
     "@typescript-eslint/indent": "off",
     "space-before-function-paren": "off",
-    "@typescript-eslint/space-before-function-paren": "off"
+    "@typescript-eslint/space-before-function-paren": "off",
+    "brace-style": "off",
+    "@typescript-eslint/brace-style": "off"
   }
 }

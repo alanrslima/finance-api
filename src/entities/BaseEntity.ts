@@ -6,10 +6,10 @@ export class BaseEntity {
   id: string
 
   @CreateDateColumn()
-  createdAt: Date
+  createdAt?: Date
 
   @CreateDateColumn()
-  updatedAt: Date
+  updatedAt?: Date
 
   @DeleteDateColumn({ nullable: true, default: null, select: false })
   deletedAt?: Date

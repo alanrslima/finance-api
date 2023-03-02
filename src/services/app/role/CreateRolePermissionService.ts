@@ -1,3 +1,4 @@
+import { DeepPartial } from 'typeorm'
 import { Role } from '../../../entities/Role'
 import { PermissionRepository } from '../../../repositories/permission/PermissionRepository'
 import { RoleRepository } from '../../../repositories/role/RoleRepository'
@@ -16,8 +17,8 @@ export class CreateRolePermissionService {
   async execute({
     roleId,
     permissions
-  }: RolePermissionRequest): Promise<Role | Error> {
-    const role = await this.roleRepository.read({ where: { id: roleId } })
+  }: RolePermissionRequest): Promise<DeepPartial<Role> | Error> {
+    const role = await this.roleRepository.readById(roleId)
 
     if (role === null) {
       return new Error('Role does not exists!')

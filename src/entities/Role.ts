@@ -16,5 +16,5 @@ export class Role extends BaseEntity {
     joinColumns: [{ name: 'roleId' }],
     inverseJoinColumns: [{ name: 'permissionId' }]
   })
-  permissions: Permission[]
+  permissions?: Permission[]
 }

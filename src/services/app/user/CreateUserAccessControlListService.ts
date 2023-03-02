@@ -13,7 +13,9 @@ export class CreateUserAccessControlListService {
     private readonly roleRepository: RoleRepository
   ) {}
 
-  async execute({ userId, roles }: UserACLRequest): Promise<User | Error> {
+  async execute({ userId, roles }: UserACLRequest): Promise<User> {
+    // const user = await this.userRepository.read({ where: { id: userId } })
+
     const user = await this.userRepository.read({ where: { id: userId } })
 
     if (user === null) {

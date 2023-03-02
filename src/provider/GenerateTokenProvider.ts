@@ -1,5 +1,4 @@
 import { sign } from 'jsonwebtoken'
-import { constants } from '../config/constants'
 
 interface GenerateTokenProviderProps {
   userId: string
@@ -7,9 +6,9 @@ interface GenerateTokenProviderProps {
 
 class GenerateTokenProvider {
   execute({ userId }: GenerateTokenProviderProps): string {
-    const token = sign({}, constants.SECRET_JWT, {
+    const token = sign({}, process.env.SECRET_JWT ?? '', {
       subject: userId,
-      expiresIn: constants.JWT_EXPIRES_IN
+      expiresIn: process.env.JWT_EXPIRES_IN ?? ''
     })
 
     return token

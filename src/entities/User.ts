@@ -17,22 +17,22 @@ export class User extends BaseEntity {
   email: string
 
   @Column({ nullable: true, select: false })
-  password: string
+  password?: string
 
   @Column({ nullable: true })
-  firstName: string
+  firstName?: string
 
   @Column({ nullable: true })
-  lastName: string
+  lastName?: string
 
   @Column({ nullable: true })
-  phone: string
+  phone?: string
 
   @Column({ nullable: true })
-  profile: string
+  profile?: string
 
   @CreateDateColumn({ nullable: true })
-  verifiedAt: Date
+  verifiedAt?: Date
 
   @ManyToMany(() => Role)
   @JoinTable({
@@ -40,13 +40,13 @@ export class User extends BaseEntity {
     joinColumns: [{ name: 'userId' }],
     inverseJoinColumns: [{ name: 'roleId' }]
   })
-  roles: Role[]
+  roles?: Role[]
 
   @OneToMany(() => RefreshToken, (refreshToken) => refreshToken.user, {
     cascade: true
   })
-  refreshTokens: RefreshToken[]
+  refreshTokens?: RefreshToken[]
 
   @OneToMany(() => Account, (account) => account.user, { cascade: true })
-  accounts: Account[]
+  accounts?: Account[]
 }

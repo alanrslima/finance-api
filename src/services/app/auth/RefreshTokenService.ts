@@ -4,24 +4,24 @@ import { GenerateRefreshTokenProvider } from '../../../provider/GenerateRefreshT
 import { ErrorGenerator } from '../../../lib/ErrorGenerator'
 import { RefreshTokenRepository } from '../../../repositories/refreshToken/RefreshTokenRepository'
 import { StatusCodes } from 'http-status-codes'
-import { InMemoryRefreshTokenRepository } from '../../../repositories/refreshToken/InMemoryRefreshTokenRepository'
+import { User } from '../../../entities/User'
+import { RefreshToken } from '../../../entities/RefreshToken'
 
 interface RefreshTokenRequest {
-  refresh_token: string
+  refreshTokenId: string
 }
 
 class RefreshTokenService {
   constructor(
-    private readonly refreshTokenRepository:
-      | RefreshTokenRepository
-      | InMemoryRefreshTokenRepository
+    private readonly refreshTokenRepository: RefreshTokenRepository
   ) {}
 
-  async execute({
-    refresh_token
-  }: RefreshTokenRequest): Promise<{ token: string }> {
+  async execute({ refreshTokenId }: RefreshTokenRequest): Promise<{
+    token: string
+    refreshToken?: RefreshToken
+  }> {
     const refreshToken = await this.refreshTokenRepository.readWithUser(
-      refresh_token
+      refreshTokenId
     )
     if (refreshToken === null) {
       throw new ErrorGenerator('Refresh token invalid', StatusCodes.NOT_FOUND)
@@ -29,7 +29,7 @@ class RefreshTokenService {
 
     const generateTokenProvider = new GenerateTokenProvider()
     const token = generateTokenProvider.execute({
-      userId: refreshToken.user.id
+      userId: refreshToken?.user?.id as string
     })
 
     const refreshTokenExpired = dayjs().isAfter(
@@ -40,7 +40,7 @@ class RefreshTokenService {
         this.refreshTokenRepository
       )
       const newRefreshToken = await generateRefreshTokenProvider.execute({
-        user: refreshToken.user
+        user: refreshToken?.user as User
       })
       return { token, refreshToken: newRefreshToken }
     }
