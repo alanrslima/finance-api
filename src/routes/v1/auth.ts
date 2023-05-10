@@ -14,19 +14,19 @@ router.post("/login", authController.handle);
 router.post("/refresh-token", refreshTokenController.handle);
 
 // Github OAUTH
-router.get("/github/login", passportGithub.authenticate("oauth2"));
-router.get(
-  "/github/callback",
-  passportGithub.authenticate("oauth2", { failureRedirect: "/login" }),
-  callbackController.handle
-);
+// router.get("/github/login", passportGithub.authenticate("oauth2"));
+// router.get(
+//   "/github/callback",
+//   passportGithub.authenticate("oauth2", { failureRedirect: "/login" }),
+//   callbackController.handle
+// );
 
 // facebook OAUTH
-router.get("/github/login", passportGithub.authenticate("oauth2"));
-router.get(
-  "/github/callback",
-  passportGithub.authenticate("oauth2", { failureRedirect: "/login" }),
-  callbackController.handle
-);
+// router.get("/github/login", passportGithub.authenticate("oauth2"));
+// router.get(
+//   "/github/callback",
+//   passportGithub.authenticate("oauth2", { failureRedirect: "/login" }),
+//   callbackController.handle
+// );
 
 export { router as authRouter };

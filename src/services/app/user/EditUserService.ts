@@ -9,7 +9,7 @@ export class EditUserService {
 
   async execute(
     id: string,
-    { email, firstName, lastName, phone, profile }: User
+    { firstName, lastName, phone, profile }: User
   ): Promise<User> {
     const getUserService = new GetUserService(this.userRepository);
     const existUser = await getUserService.execute({ id });
@@ -18,7 +18,6 @@ export class EditUserService {
     }
     return this.userRepository.update({
       ...existUser,
-      email,
       firstName,
       lastName,
       phone,

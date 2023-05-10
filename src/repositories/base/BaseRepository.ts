@@ -1,4 +1,9 @@
-import { DeepPartial, DeleteResult } from "typeorm";
+import {
+  DeepPartial,
+  DeleteResult,
+  FindConditions,
+  FindManyOptions,
+} from "typeorm";
 
 export interface BaseRepository<Entity> {
   create(entity: DeepPartial<Entity>): Promise<Entity>;
@@ -10,6 +15,11 @@ export interface BaseRepository<Entity> {
   read(id: string | number): Promise<Entity>;
 
   update(entity: DeepPartial<Entity>): Promise<Entity>;
+
+  // list(options?: FindManyOptions<Entity>): Promise<[Entity[], number]>;
+
+  list(options?: FindManyOptions<Entity>): Promise<[Entity[], number]>;
+  list(conditions?: FindConditions<Entity>): Promise<[Entity[], number]>;
 
   /**
    * Make a logic deletion on database

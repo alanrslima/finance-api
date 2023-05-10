@@ -24,8 +24,8 @@ router.post(
 
 router.get("/me", ensuredAuthenticated(), getUserController.handle);
 
-router.put("/:id", ensuredAuthenticated(), editUserController.handle);
+router.put("/", ensuredAuthenticated(), editUserController.handle);
 
-router.delete("/:id", ensuredAuthenticated(), deleteUserController.handle);
+// router.delete("/", ensuredAuthenticated(), deleteUserController.handle);
 
 export { router as usersRouter };

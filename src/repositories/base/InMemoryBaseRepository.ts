@@ -1,4 +1,9 @@
-import { DeepPartial, DeleteResult } from "typeorm";
+import {
+  DeepPartial,
+  DeleteResult,
+  FindConditions,
+  FindManyOptions,
+} from "typeorm";
 import { BaseEntity } from "../../entities/BaseEntity";
 import { BaseRepository } from "./BaseRepository";
 import { v4 as uuid } from "uuid";
@@ -12,6 +17,11 @@ export class InMemoryBaseRepository<Entity> implements BaseRepository<Entity> {
   constructor({ schema }: { schema: any }) {
     this.items = [];
     this.schema = schema;
+  }
+  list(options?: FindManyOptions<Entity>): Promise<[Entity[], number]>;
+  list(conditions?: FindConditions<Entity>): Promise<[Entity[], number]>;
+  list(conditions?: unknown): Promise<[Entity[], number]> {
+    throw new Error("Method not implemented.");
   }
 
   async validator(entity: DeepPartial<Entity>) {

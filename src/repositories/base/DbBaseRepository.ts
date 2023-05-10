@@ -64,6 +64,12 @@ export class DbBaseRepository<Entity> implements BaseRepository<Entity> {
     return false;
   }
 
+  list(options?: FindManyOptions<Entity>): Promise<[Entity[], number]>;
+  list(conditions?: FindConditions<Entity>): Promise<[Entity[], number]>;
+  list(conditions?: unknown): Promise<[Entity[], number]> {
+    return this.repository.findAndCount(conditions);
+  }
+
   async remove(id: string | number) {
     return await this.repository
       .createQueryBuilder()

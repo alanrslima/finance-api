@@ -11,11 +11,14 @@ import { Category } from "./Category";
 
 @Entity("transactions")
 export class Transaction extends BaseEntity {
+  @Column()
+  name: string;
+
   @CreateDateColumn()
   date: Date;
 
   @Column({ nullable: true })
-  description: string;
+  notes: string;
 
   @Column()
   value: number;

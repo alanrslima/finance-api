@@ -10,6 +10,7 @@ import { Account } from "./Account";
 import { BaseEntity } from "./BaseEntity";
 import { RefreshToken } from "./RefreshToken";
 import { Role } from "./Role";
+import { Category } from "./Category";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -49,4 +50,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Account, (account) => account.user, { cascade: true })
   accounts: Account[];
+
+  @OneToMany(() => Category, (category) => category.user, { cascade: true })
+  categories: Category[];
 }

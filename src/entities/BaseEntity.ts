@@ -11,7 +11,7 @@ export class BaseEntity {
   @CreateDateColumn()
   updatedAt: Date;
 
-  @CreateDateColumn({ nullable: true })
+  @CreateDateColumn({ nullable: true, select: false })
   deletedAt: Date;
 
   constructor() {

@@ -1,12 +1,16 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateAccount1657848100840 implements MigrationInterface {
+export class CreateTransactions1665847358662 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "accounts",
+        name: "transactions",
         columns: [
-          { name: "id", isPrimary: true, type: "varchar(36)" },
+          {
+            name: "id",
+            isPrimary: true,
+            type: "varchar(36)",
+          },
           {
             name: "name",
             type: "varchar(128)",
@@ -19,6 +23,10 @@ export class CreateAccount1657848100840 implements MigrationInterface {
           {
             name: "color",
             type: "varchar(36)",
+          },
+          {
+            name: "date",
+            type: "timestamp",
           },
           {
             name: "isActive",
@@ -51,7 +59,7 @@ export class CreateAccount1657848100840 implements MigrationInterface {
             columnNames: ["userId"],
             referencedColumnNames: ["id"],
             referencedTableName: "users",
-            name: "fk_accounts_user",
+            name: "fk_transactions_user",
             onDelete: "RESTRICT",
             onUpdate: "CASCADE",
           },
@@ -61,6 +69,6 @@ export class CreateAccount1657848100840 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("accounts");
+    await queryRunner.dropTable("transactions");
   }
 }
