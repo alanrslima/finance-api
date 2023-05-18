@@ -1,37 +1,19 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateTransactions1665847358662 implements MigrationInterface {
+export class CreateCategories1665847358662 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "transactions",
+        name: "categories",
         columns: [
-          {
-            name: "id",
-            isPrimary: true,
-            type: "varchar(36)",
-          },
+          { name: "id", isPrimary: true, type: "varchar(36)" },
           {
             name: "name",
             type: "varchar(128)",
           },
           {
-            name: "openingBalance",
-            type: "numeric",
-            default: 0,
-          },
-          {
             name: "color",
             type: "varchar(36)",
-          },
-          {
-            name: "date",
-            type: "timestamp",
-          },
-          {
-            name: "isActive",
-            type: "boolean",
-            default: true,
           },
           {
             name: "userId",
@@ -59,7 +41,7 @@ export class CreateTransactions1665847358662 implements MigrationInterface {
             columnNames: ["userId"],
             referencedColumnNames: ["id"],
             referencedTableName: "users",
-            name: "fk_transactions_user",
+            name: "fk_categories_user",
             onDelete: "RESTRICT",
             onUpdate: "CASCADE",
           },
@@ -69,6 +51,6 @@ export class CreateTransactions1665847358662 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("transactions");
+    await queryRunner.dropTable("categories");
   }
 }

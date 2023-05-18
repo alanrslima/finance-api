@@ -64,10 +64,22 @@ export class DbBaseRepository<Entity> implements BaseRepository<Entity> {
     return false;
   }
 
-  list(options?: FindManyOptions<Entity>): Promise<[Entity[], number]>;
-  list(conditions?: FindConditions<Entity>): Promise<[Entity[], number]>;
-  list(conditions?: unknown): Promise<[Entity[], number]> {
-    return this.repository.findAndCount(conditions);
+  list(
+    options?: FindManyOptions<Entity>
+  ): Promise<{ rows: (Entity & BaseEntity)[]; count: number }>;
+  list(
+    conditions?: FindConditions<Entity>
+  ): Promise<{ rows: (Entity & BaseEntity)[]; count: number }>;
+  async list(conditions?: any): Promise<{
+    rows: (Entity & BaseEntity)[];
+    count: number;
+  }> {
+    const take = 50;
+    const response = await this.repository.findAndCount({
+      ...conditions,
+      take,
+    });
+    return { rows: response[0], count: response[1] };
   }
 
   async remove(id: string | number) {

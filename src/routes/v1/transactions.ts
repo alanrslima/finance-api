@@ -1,15 +1,14 @@
 import { Router } from "express";
 import { ensuredAuthenticated } from "../../middleware/ensuredAuthenticated";
-// import { GetUserAccountsController } from "../../controllers/account/GetUserAccountsController";
-import { CreateUserAccountController } from "../../controllers/account/CreateUserAccountController";
+import { GetTransactionController } from "../../controllers/transaction/GetTransactionController";
 import { CreateTransactionController } from "../../controllers/transaction/CreateTransactionController";
 
 const router = Router();
 
-// const getUserAccountsController = new GetUserAccountsController();
+const getTransactionController = new GetTransactionController();
 const createTransactionController = new CreateTransactionController();
 
-// router.get("/", ensuredAuthenticated(), getUserAccountsController.handle);
+router.get("/", ensuredAuthenticated(), getTransactionController.handle);
 router.post("/", ensuredAuthenticated(), createTransactionController.handle);
 
 export { router as transactionsRouter };

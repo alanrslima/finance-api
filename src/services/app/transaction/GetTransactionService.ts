@@ -1,19 +1,18 @@
-import { Transaction } from "../../../entities/Transaction";
+import { Between, In } from "typeorm";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { AccountRepository } from "../../../repositories/account/AccountRepository";
 import { TransactionRepository } from "../../../repositories/transaction/TransactionRepository";
 import { StatusCode } from "../../../types/statusCode";
 
-export class CreateTransactionService {
+export class GetTransactionService {
   constructor(
     private transactionRepository: TransactionRepository,
     private accountRepository: AccountRepository
   ) {}
 
-  async execute(userId: string, transaction: Transaction) {
-    // 1. Veirificar se a conta é do usuário logado
+  async execute(userId: string, params: any) {
     const { rows } = await this.accountRepository.list({
-      where: { user: { id: userId }, id: transaction.account.id },
+      where: { user: { id: userId } },
     });
 
     if (!rows.length) {
@@ -22,9 +21,16 @@ export class CreateTransactionService {
         StatusCode.Unauthorized
       );
     }
-    // 2. Verificar se a categoria é do usuário logado
 
-    const data = await this.transactionRepository.create(transaction);
+    const data = await this.transactionRepository.list({
+      where: {
+        ...(params?.startAt &&
+          params?.endAt && {
+            date: Between(new Date(params?.startAt), new Date(params?.endAt)),
+          }),
+        account: { id: In(rows.map((account) => account.id)) },
+      },
+    });
     return data;
   }
 }

@@ -1,22 +1,39 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateCategories1683676004460 implements MigrationInterface {
+export class CreateTransactions1683676004460 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "categories",
+        name: "transactions",
         columns: [
-          { name: "id", isPrimary: true, type: "varchar(36)" },
+          {
+            name: "id",
+            isPrimary: true,
+            type: "varchar(36)",
+          },
           {
             name: "name",
             type: "varchar(128)",
           },
           {
-            name: "color",
+            name: "notes",
+            type: "varchar(256)",
+            isNullable: true,
+          },
+          {
+            name: "value",
+            type: "float",
+          },
+          {
+            name: "date",
+            type: "timestamp",
+          },
+          {
+            name: "accountId",
             type: "varchar(36)",
           },
           {
-            name: "userId",
+            name: "categoryId",
             type: "varchar(36)",
           },
           {
@@ -38,10 +55,18 @@ export class CreateCategories1683676004460 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            columnNames: ["userId"],
+            columnNames: ["accountId"],
             referencedColumnNames: ["id"],
-            referencedTableName: "users",
-            name: "fk_categories_user",
+            referencedTableName: "accounts",
+            name: "fk_transactions_account",
+            onDelete: "RESTRICT",
+            onUpdate: "CASCADE",
+          },
+          {
+            columnNames: ["categoryId"],
+            referencedColumnNames: ["id"],
+            referencedTableName: "categories",
+            name: "fk_transactions_category",
             onDelete: "RESTRICT",
             onUpdate: "CASCADE",
           },
@@ -51,6 +76,6 @@ export class CreateCategories1683676004460 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("categories");
+    await queryRunner.dropTable("transactions");
   }
 }

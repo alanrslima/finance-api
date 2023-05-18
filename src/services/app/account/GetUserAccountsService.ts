@@ -4,8 +4,12 @@ import { AccountRepository } from "../../../repositories/account/AccountReposito
 export class GetUserAccountsService {
   constructor(private accountRepository: AccountRepository) {}
 
-  async execute({ userId }: { userId: string }): Promise<Account[]> {
-    const accounts = await this.accountRepository.listByUserId(userId);
+  async execute({ userId }: { userId: string }) {
+    const accounts = await this.accountRepository.list({
+      take: 1,
+      skip: 0,
+      where: { user: { id: userId } },
+    });
     return accounts;
   }
 }

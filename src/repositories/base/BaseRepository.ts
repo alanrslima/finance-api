@@ -18,8 +18,12 @@ export interface BaseRepository<Entity> {
 
   // list(options?: FindManyOptions<Entity>): Promise<[Entity[], number]>;
 
-  list(options?: FindManyOptions<Entity>): Promise<[Entity[], number]>;
-  list(conditions?: FindConditions<Entity>): Promise<[Entity[], number]>;
+  list(
+    options?: FindManyOptions<Entity>
+  ): Promise<{ rows: Entity[]; count: number }>;
+  list(
+    conditions?: FindConditions<Entity>
+  ): Promise<{ rows: Entity[]; count: number }>;
 
   /**
    * Make a logic deletion on database
