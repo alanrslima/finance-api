@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { AuthService } from "../../services/app/auth/AuthService";
 import Joi from "joi";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 import { Validator } from "../../lib/Validator";
 import { DbUserRepository } from "../../repositories/user/DbUserRepository";
 import { DbRefreshTokenRepository } from "../../repositories/refreshToken/DbRefreshTokenRepository";

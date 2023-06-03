@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { DbUserRepository } from "../../repositories/user/DbUserRepository";
 import { DeleteUserService } from "../../services/app/user/DeleteUserService";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 
 export class DeleteUserController {
   async handle(request: Request, response: Response) {

@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 // import { Validator } from "../../lib/Validator";
 import { DbPermissionRepository } from "../../repositories/permission/DbPermissionRepository";
 import { CreatePermissionService } from "../../services/app/permission/CreatePermissionService";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 
 // const schema = Joi.object({
 //   name: Joi.string().required(),

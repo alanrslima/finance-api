@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { DbCategoryRepository } from "../../repositories/category/DbCategoryRepository";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 import { CreateCategoryService } from "../../services/app/category/CreateCategoryService";
 
 export class CreateCategoryController {

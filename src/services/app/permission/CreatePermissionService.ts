@@ -1,7 +1,7 @@
 import { Permission } from "../../../entities/Permission";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { PermissionRepository } from "../../../repositories/permission/PermissionRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
 
 type PermissionRequest = {
   name: string;

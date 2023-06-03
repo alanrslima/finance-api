@@ -3,7 +3,7 @@ import { User } from "../../../entities/User";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { InMemoryRefreshTokenRepository } from "../../../repositories/refreshToken/InMemoryRefreshTokenRepository";
 import { InMemoryUserRepository } from "../../../repositories/user/InMemoryUserRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
 import { CreateUserService } from "../user/CreateUserService";
 import { DeleteUserService } from "../user/DeleteUserService";
 import { AuthService } from "./AuthService";

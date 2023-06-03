@@ -4,7 +4,7 @@ import { DbPermissionRepository } from "../../repositories/permission/DbPermissi
 import { DbRoleRepository } from "../../repositories/role/DbRoleRepository";
 // import { Validator } from "../../lib/Validator";
 import { CreateRolePermissionService } from "../../services/app/role/CreateRolePermissionService";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 
 // const schema = Joi.object({
 //   permissions: Joi.array().items(Joi.string()).required(),

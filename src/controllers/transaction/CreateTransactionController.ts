@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { DbTransactionRepository } from "../../repositories/transaction/DbTransactionRepository";
 import { CreateTransactionService } from "../../services/app/transaction/CreateTransactionService";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 import { DbAccountRepository } from "../../repositories/account/DbAccountRepository";
 
 export class CreateTransactionController {

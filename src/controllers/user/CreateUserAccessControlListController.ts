@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Validator } from "../../lib/Validator";
 import { CreateUserAccessControlListService } from "../../services/app/user/CreateUserAccessControlListService";
 import Joi from "joi";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 import { DbUserRepository } from "../../repositories/user/DbUserRepository";
 import { DbRoleRepository } from "../../repositories/role/DbRoleRepository";
 

@@ -6,11 +6,11 @@ export const routeResponser = (
   next: NextFunction
 ) => {
   response.responser = (
-    status,
-    message = "",
-    data = {},
-    error = null,
-    type = "json"
+    status: number,
+    message: string = "",
+    data: any = {},
+    errors: { cdErro: number; message: string }[],
+    type: string = "json"
   ) => {
     // if (config.webserver.logs.active) {
     //   const urlsDontLog = ['/health', '/users/me'];
@@ -20,9 +20,10 @@ export const routeResponser = (
     // Log.write();
     // }
 
-    if (error) {
+    if (errors) {
       // console.error(message, error);
       // console.log("Error details:", error);
+      return response.status(status).type(type).send({ errors });
     }
 
     return response.status(status).type(type).send({

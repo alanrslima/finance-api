@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 import { DbCategoryRepository } from "../../repositories/category/DbCategoryRepository";
 import { GetCategoryService } from "../../services/app/category/GetCategoryService";
 

@@ -2,7 +2,8 @@ import { Between, In } from "typeorm";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { AccountRepository } from "../../../repositories/account/AccountRepository";
 import { TransactionRepository } from "../../../repositories/transaction/TransactionRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
+import { Errors } from "../../../lib/Errors";
 
 export class GetTransactionService {
   constructor(
@@ -16,10 +17,9 @@ export class GetTransactionService {
     });
 
     if (!rows.length) {
-      throw new ErrorGenerator(
-        "Conta inexistente ou sem acesso para o usuário logado",
-        StatusCode.Unauthorized
-      );
+      throw new ErrorGenerator(StatusCode.Unauthorized, [
+        Errors["resource.unauthorized"],
+      ]);
     }
 
     const data = await this.transactionRepository.list({

@@ -5,8 +5,9 @@ import { GenerateRefreshTokenProvider } from "../../../provider/GenerateRefreshT
 import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
 import { RefreshTokenRepository } from "../../../repositories/refreshToken/RefreshTokenRepository";
 import { UserRepository } from "../../../repositories/user/UserRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
 import { GetUserService } from "../user/GetUserService";
+import { Errors } from "../../../lib/Errors";
 
 export class AuthService {
   constructor(
@@ -19,22 +20,22 @@ export class AuthService {
     const userExisted = await getUserService.execute({ email: user.email });
 
     if (!userExisted) {
-      throw new ErrorGenerator(
-        "Usuário ou senha inválidos!",
-        StatusCode.Unauthorized
-      );
+      throw new ErrorGenerator(StatusCode.Unauthorized, [
+        Errors["user.unauthorized"],
+      ]);
     }
 
     if (userExisted.deletedAt) {
-      throw new ErrorGenerator("Usuário desativado", StatusCode.Unauthorized);
+      throw new ErrorGenerator(StatusCode.Unauthorized, [
+        Errors["user.unauthorized"],
+      ]);
     }
 
     const passwordMatch = await compare(user.password, userExisted.password);
     if (!passwordMatch) {
-      throw new ErrorGenerator(
-        "Usuário ou senha inválidos!",
-        StatusCode.Unauthorized
-      );
+      throw new ErrorGenerator(StatusCode.Unauthorized, [
+        Errors["user.unauthorized"],
+      ]);
     }
 
     const generateTokenProvider = new GenerateTokenProvider();

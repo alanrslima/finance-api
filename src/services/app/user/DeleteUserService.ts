@@ -1,6 +1,6 @@
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { UserRepository } from "../../../repositories/user/UserRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
 
 export class DeleteUserService {
   constructor(private userRepository: UserRepository) {}
@@ -8,7 +8,7 @@ export class DeleteUserService {
   async execute(id: string) {
     const deleted = await this.userRepository.delete(id);
     if (!deleted) {
-      throw new ErrorGenerator("User not exists", StatusCode.BadRequest);
+      throw new ErrorGenerator(StatusCode.BadRequest, []);
     }
     return deleted;
   }

@@ -1,7 +1,7 @@
 import { User } from "../../../entities/User";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { InMemoryUserRepository } from "../../../repositories/user/InMemoryUserRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
 import { CreateUserService } from "./CreateUserService";
 
 describe("Create user service", () => {

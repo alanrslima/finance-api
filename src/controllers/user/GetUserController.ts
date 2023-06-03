@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { DbUserRepository } from "../../repositories/user/DbUserRepository";
 import { GetUserService } from "../../services/app/user/GetUserService";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 
 export class GetUserController {
   async handle(request: Request, response: Response, next: NextFunction) {

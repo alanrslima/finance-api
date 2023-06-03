@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
-import { Validator } from "../../lib/Validator";
 import { DbUserRepository } from "../../repositories/user/DbUserRepository";
-import { userSchema } from "../../repositories/user/UserSchema";
 import { CreateUserService } from "../../services/app/user/CreateUserService";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 export class CreateUserController {
   async handle(request: Request, response: Response) {
     const userRepository = new DbUserRepository();

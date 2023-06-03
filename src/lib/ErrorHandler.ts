@@ -7,7 +7,7 @@ export class ErrorHandler {
     console.error(err);
     switch (err.name) {
       case "ErrorGenerator":
-        return res.responser(err.statusCode, err.message);
+        return res.responser(err.statusCode, err.message, null, err.detail);
       default:
         return res.responser(
           500,

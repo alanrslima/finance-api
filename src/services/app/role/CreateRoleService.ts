@@ -1,6 +1,6 @@
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
 import { RoleRepository } from "../../../repositories/role/RoleRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
 
 type RoleRequest = {
   name: string;

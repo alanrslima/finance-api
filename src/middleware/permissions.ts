@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { ErrorGenerator } from "../lib/ErrorGenerator";
 // import { UserRepository } from "../repositories/user";
-import { StatusCode } from "../types/statusCode";
+import { StatusCode } from "../types/StatusCode";
 
 export function can(permissionsRoutes: string[]) {
   return async (request: Request, _: Response, next: NextFunction) => {

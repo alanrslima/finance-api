@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { DbUserRepository } from "../../repositories/user/DbUserRepository";
 import { EditUserService } from "../../services/app/user/EditUserService";
-import { StatusCode } from "../../types/statusCode";
+import { StatusCode } from "../../types/StatusCode";
 
 export class EditUserController {
   async handle(request: Request, response: Response) {

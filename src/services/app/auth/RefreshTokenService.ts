@@ -2,8 +2,9 @@ import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
 import dayjs = require("dayjs");
 import { GenerateRefreshTokenProvider } from "../../../provider/GenerateRefreshTokenProvider";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
 import { RefreshTokenRepository } from "../../../repositories/refreshToken/RefreshTokenRepository";
+import { Errors } from "../../../lib/Errors";
 
 type RefreshTokenRequest = {
   refresh_token: string;
@@ -17,7 +18,7 @@ class RefreshTokenService {
       refresh_token
     );
     if (!refreshToken) {
-      throw new ErrorGenerator("Refresh token invalid", StatusCode.NotFound);
+      throw new ErrorGenerator(StatusCode.NotFound, [Errors["token.missing"]]);
     }
 
     const generateTokenProvider = new GenerateTokenProvider();

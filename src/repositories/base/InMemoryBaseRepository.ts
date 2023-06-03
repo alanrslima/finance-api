@@ -18,10 +18,21 @@ export class InMemoryBaseRepository<Entity> implements BaseRepository<Entity> {
     this.items = [];
     this.schema = schema;
   }
-  list(options?: FindManyOptions<Entity>): Promise<[Entity[], number]>;
-  list(conditions?: FindConditions<Entity>): Promise<[Entity[], number]>;
-  list(conditions?: unknown): Promise<[Entity[], number]> {
-    throw new Error("Method not implemented.");
+
+  list(
+    options?: FindManyOptions<Entity>
+  ): Promise<{ rows: Entity[]; count: number }>;
+  list(
+    conditions?: FindConditions<Entity>
+  ): Promise<{ rows: Entity[]; count: number }>;
+  list(
+    conditions?: unknown
+  ):
+    | Promise<{ rows: Entity[]; count: number }>
+    | Promise<{ rows: Entity[]; count: number }> {
+    return new Promise((resolve) => {
+      resolve({ rows: [], count: 0 });
+    });
   }
 
   async validator(entity: DeepPartial<Entity>) {

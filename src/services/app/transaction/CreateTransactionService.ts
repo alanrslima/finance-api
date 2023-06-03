@@ -1,8 +1,9 @@
 import { Transaction } from "../../../entities/Transaction";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
+import { Errors } from "../../../lib/Errors";
 import { AccountRepository } from "../../../repositories/account/AccountRepository";
 import { TransactionRepository } from "../../../repositories/transaction/TransactionRepository";
-import { StatusCode } from "../../../types/statusCode";
+import { StatusCode } from "../../../types/StatusCode";
 
 export class CreateTransactionService {
   constructor(
@@ -17,10 +18,9 @@ export class CreateTransactionService {
     });
 
     if (!rows.length) {
-      throw new ErrorGenerator(
-        "Conta inexistente ou sem acesso para o usuário logado",
-        StatusCode.Unauthorized
-      );
+      throw new ErrorGenerator(StatusCode.Forbidden, [
+        Errors["resource.unauthorized"],
+      ]);
     }
     // 2. Verificar se a categoria é do usuário logado
 

@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { StatusCode } from "../types/statusCode";
+import { StatusCode } from "../types/StatusCode";
 import { ErrorGenerator } from "./ErrorGenerator";
 
 export class Validator {
@@ -14,7 +14,7 @@ export class Validator {
       // await this.schema.validateAsync(entity, { abortEarly: false });
       await this.schema.validateAsync(entity);
     } catch (error) {
-      throw new ErrorGenerator(error.message, StatusCode.BadRequest);
+      throw new ErrorGenerator(StatusCode.BadRequest, error.details);
     }
   }
 }

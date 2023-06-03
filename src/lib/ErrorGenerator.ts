@@ -1,19 +1,22 @@
-import { StatusCode } from "../types/statusCode";
+import { ErrorDetail } from "../types/ErrorDetail";
+import { StatusCode } from "../types/StatusCode";
 
 export class ErrorGenerator extends Error {
-  private statusCode;
+  detail: ErrorDetail[];
+  statusCode: StatusCode;
 
   constructor(
-    message: string,
     statusCode: StatusCode,
+    detail: ErrorDetail[],
     name = "ErrorGenerator"
   ) {
     super();
 
     Object.setPrototypeOf(this, new.target.prototype);
     this.name = name;
-    this.message = message;
+    // this.message = message;
     this.statusCode = statusCode;
+    this.detail = detail;
     Error.captureStackTrace(this);
   }
 }
