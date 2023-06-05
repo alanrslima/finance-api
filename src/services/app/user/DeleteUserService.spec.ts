@@ -1,11 +1,12 @@
 import { User } from "../../../entities/User";
 import { ErrorGenerator } from "../../../lib/ErrorGenerator";
+import { Errors } from "../../../lib/Errors";
 import { InMemoryUserRepository } from "../../../repositories/user/InMemoryUserRepository";
 import { StatusCode } from "../../../types/StatusCode";
 import { DeleteUserService } from "./DeleteUserService";
 
 describe("Delete user service", () => {
-  it("Should throw an error if user dont exists", async () => {
+  it("Should throw an error if user does not exists", async () => {
     const userRepository = new InMemoryUserRepository();
     const deleteUserService = new DeleteUserService(userRepository);
     const userId = "1234";
@@ -13,7 +14,11 @@ describe("Delete user service", () => {
       await deleteUserService.execute(userId);
     } catch (error) {
       expect(error).toBeInstanceOf(ErrorGenerator);
-      expect(error).toHaveProperty("message", "User not exists");
+      expect(error?.detail).toBeInstanceOf(Array);
+      expect(error?.detail).toHaveLength(1);
+      const [detail] = error.detail;
+      expect(detail).toHaveProperty("message", Errors["user.invalid"].message);
+      expect(detail).toHaveProperty("code", Errors["user.invalid"].code);
       expect(error).toHaveProperty("statusCode", StatusCode.BadRequest);
     }
   });

@@ -13,7 +13,7 @@ export class CreateUserService {
     if (existUser) {
       throw new ErrorGenerator(StatusCode.BadRequest, [Errors["user.exists"]]);
     }
-    let passwordHash;
+    let passwordHash: string;
     if (user.password) {
       passwordHash = await hash(user.password, 8);
     }

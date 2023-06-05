@@ -12,7 +12,7 @@ export class Validator {
   async validateAsyncFields(entity: any) {
     try {
       // await this.schema.validateAsync(entity, { abortEarly: false });
-      await this.schema.validateAsync(entity);
+      await this.schema.validateAsync(entity, { abortEarly: false });
     } catch (error) {
       throw new ErrorGenerator(StatusCode.BadRequest, error.details);
     }
